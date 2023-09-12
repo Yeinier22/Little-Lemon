@@ -1,0 +1,19 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 15%;
+    margin-right: 15%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+}
+
+header Nav {
+    justify-content: right;
+}
+
+.logo{
+    border-radius: 10px;
+    height: 70px;
+}
