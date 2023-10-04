@@ -1,0 +1,47 @@
+
+@media (max-width: 500px) {
+
+    #special-title {
+        font-size: 25px;
+}
+
+#special-container {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+    height: 600px;
+    background-color: #ECEEED ;
+}
+
+#special-heading{
+    margin-left: 5px;
+    margin-right: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+Button {
+    margin-top:  5px;
+    justify-items: center;
+}
+
+#order-delivery {
+    margin-bottom: 20px;
+}
+
+.carousel.carousel-slider .control-arrow {
+    color: black;
+}
+
+/* Change color next and prev arrow to black*/
+.carousel .control-next.control-arrow:before {
+    border-left: 8px solid #000 !important; 
+    font-size: 50px !important; 
+  }
+  .carousel .control-prev.control-arrow:before {
+    border-right: 8px solid #000 !important; 
+  }
+
+}

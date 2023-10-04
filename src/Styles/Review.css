@@ -1,0 +1,32 @@
+.container-review {
+    display: block;
+    margin-right: 50px;
+    margin-left: 50px;
+}
+
+h2 {
+    display: flex;
+    font-size: 30px;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+
+.card-review {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+@media (max-width: 945px) {
+    
+    .card-review {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+}

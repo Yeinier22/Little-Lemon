@@ -1,13 +1,123 @@
-
 footer {
     display: flex;
-    align-items: center;
-    padding: 10px;
-    margin: 10px;
-    background-color: black;
-    color: white;
+    background-color: rgb(38, 38, 38);;
+    color: #fff;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px 20px 20px;
     justify-content: center;
-    align-content: center;
-    margin-left: 20px;
-    margin-right: 20px;
+}
+
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1.5rem;
+    justify-content: center;
+    max-width: 80%;
+    margin:50px 100px;
+    padding: 25px; 
+    /*line-height: 0.8;*/
+    text-align: center;
+    border: white 5px solid;
+}
+
+.footer-container h3{
+    color: #aad03a;
+    font-size: 18px;
+    line-height: 20px;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+
+.logo-container {
+    display:flex;
+    height: 300px;
+    width: 90px;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-logo {
+    transform: rotate(270deg);
+    height: 70px;
+    position: absolute;
+}
+
+
+.footer-contact h5{
+    color: white;
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+.footer-contact .address a:hover{
+    border-bottom: 2px solid #aad03a;
+    cursor: pointer;
+}
+.footer-contact .email{
+    margin-top: 20px;
+}
+.footer-contact .phone{
+    margin-top: 20px;
+}
+
+
+footer a:hover {
+    color: #fff;
+    border-bottom: 2px solid #aad03a;
+    outline: 0;
+    cursor: pointer;
+}
+
+.footer-doormat {
+    line-height: 40px;
+}
+
+.footer-social {
+    line-height: 40px;
+}
+
+
+
+
+@media (max-width: 945px){
+
+    .footer-container {
+        grid-template-columns:1fr;
+    }
+
+    footer {
+        display: flex;
+        justify-content: center;
+    }
+
+    .footer-container {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+    
+    .logo-container {
+        display:flex;
+        margin-top: 25px;
+        height: 100px;
+        width: 100%;
+        justify-content: center;
+    }
+    .footer-logo {
+        transform: rotate(0deg);
+    }
+
+    .footer-container h3{
+        margin-top: 25px;
+    }
+
+    .footer-social {
+        margin-bottom: 25px;
+    }
+    
+   
 }

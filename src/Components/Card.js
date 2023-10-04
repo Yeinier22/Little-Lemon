@@ -1,6 +1,7 @@
 import { HStack, Heading, Image, VStack, Text} from "@chakra-ui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTruck } from "@fortawesome/free-solid-svg-icons";
+import "../Styles/Card.css";
 
 const Card = ({ title, description, imageSrc, price }) => {
   return (
@@ -21,11 +22,11 @@ const Card = ({ title, description, imageSrc, price }) => {
           <Text color="red" fontWeight="bold">{price}</Text>
         </HStack>
         <HStack mb="20px">
-          <Text justifyContent="center">
+          <Text textAlign="left">
             {description}
           </Text>
         </HStack>
-        <HStack  marginTop="auto">
+        <HStack  marginTop="auto"  alignItems="center" id="order-delivery">
           <Text mr={5}>Order delivery</Text>
           <FontAwesomeIcon icon={faTruck} />
         </HStack></VStack>

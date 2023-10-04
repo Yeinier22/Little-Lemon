@@ -1,6 +1,11 @@
 import { Box, VStack, Heading, HStack, Button } from "@chakra-ui/react";
 import Card from "./Card.js";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import "../Styles/Highligh.css";
+//import "react-responsive-carousel/lib/styles/carousel.min.css";
+import "react-responsive-carousel/lib/styles/carousel.css";
+import { Carousel } from "react-responsive-carousel";
+
 
 const specials = [
   {
@@ -28,23 +33,55 @@ const specials = [
 ];
 
 const Specials = () => {
+
+  const [isMobile, setIsMobile]=useState(false);
+
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth <= 850);
+    };
+
+    checkIsMobile();
+
+    window.addEventListener('resize', checkIsMobile);
+
+    return () => {
+      window.removeEventListener('resize', checkIsMobile);
+    };
+  }, []);
+
+
+
   return (
-    <VStack
-      bg="white"
+    <Box id="special-container"
       p={8}
       alignItems="flex-start"
       spacing={8}
-      minHeight="100vh"
-      ml="15%"
-      mr="15%"
-      mt={50}
+      height="100vh"
+      ml="10%"
+      mr="10%"
+      mt={70}
     >
-      <HStack justifyContent="space-between" width="100%">
-      <Heading as="h1" id="projects-section">
+      <HStack id="special-heading" justifyContent="space-between" width="100%" mb="10px" mt="10px">
+      <Heading as="h1" id="special-title" >
         This week specials!
       </Heading>
-      <Button borderRadius="10px" bg="#EAC630">Online Menu</Button>
+      <Button borderRadius="10px" bg="#EAC630" minW={110}>Online Menu</Button>
       </HStack>
+      <Box>
+        {isMobile ? (
+            <Carousel showArrows={true} autoPlay={true} interval={5000} infiniteLoop={true} transitionTime={2000} >
+            {specials.map((project) => (
+              <Card
+                key={project.title}
+                title={project.title}
+                description={project.description}
+                imageSrc={project.getImageSrc()}
+                price={project.price}
+              />
+            ))}           
+          </Carousel>
+        ) : (
       <Box
         display="grid"
         gridTemplateColumns="repeat(3,minmax(0,1fr))"
@@ -59,8 +96,10 @@ const Specials = () => {
             price={project.price}
           />
         ))}
+        </Box>
+        )}
       </Box>
-    </VStack>
+    </Box>
   );
 };
 

@@ -1,6 +1,8 @@
 import { Heading, VStack, HStack } from "@chakra-ui/react";
 import CardReview from "../Card-review";
 import React from "react";
+import "../Styles/Review.css"
+
 
 const reviews = [
   {
@@ -34,18 +36,11 @@ const reviews = [
 ];
 
 
-
 const Testimonial = () => {
   return (
-    <VStack 
-    ml="15%" 
-    mr="15%" 
-    p={8} 
-    spacing={20}
-
-    >
-      <Heading as="h2">Testimonials</Heading>
-      <HStack display="flex" width="100%" justifyContent="space-between" spacing={20} alignItems="flex-start" >
+    <div className="container-review">
+     <h2>Testimonials</h2>
+      <div className="card-review">
         {reviews.map((project, index) => (
           <CardReview
             key={project.name1}
@@ -56,8 +51,8 @@ const Testimonial = () => {
             rating={project.rating}
           />
         ))}
-      </HStack>
-    </VStack>
+      </div>
+    </div>
   );
 };
 

@@ -1,19 +1,182 @@
-header {
-    display: flex;
-    justify-content: space-between;
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    margin-top: 0;
+}
+
+.header-container {
+    display: inline-flex;
     align-items: center;
-    margin-left: 15%;
-    margin-right: 15%;
-    padding-top: 15px;
-    padding-bottom: 15px;
-
+    justify-content: space-between;
+    position: fixed;
+    z-index: 99999;
+    margin-top: 0;
+    padding-top: 0;
+    background: white;
+    width: 100%;
+    top:0;
 }
 
-header Nav {
-    justify-content: right;
-}
-
-.logo{
-    border-radius: 10px;
+.logo {
     height: 70px;
+    margin-right: 30px;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-bottom: 10px;
 }
+
+.header-container .nav li {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font: 16px;
+    margin: 15px;
+    position: relative;
+    font-family: Arial, sans-serif;
+}
+
+.header-container .nav a {
+    font-weight: bold;
+}
+
+/*Icons*/
+.header-container  .icon-bars {
+    display: none;
+}
+.header-container  .icon-bars-open {
+    display: none;
+}
+.header-container  .icon-mark-open {
+    display: none;
+    height: 25px;
+    width: 25px;
+}
+
+.header-container  .icon-mark{
+    display: none;
+}
+
+
+
+.header-container  .nav-open{
+    display: none;
+}
+
+
+
+
+@media (max-width: 945px){
+
+    .header-container {
+        display: initia;
+        align-items: center;
+        justify-content: space-between;
+        position: fixed;
+        z-index: 99999;
+        margin-top: 0;
+        padding-top: 0;
+        background: white;
+        width: 100%;
+        top:0;
+    }
+    
+
+    .header-container  nav {
+        display: flex;
+        position: fixed;
+        justify-content: center;
+        top: 80px;  /*Logo height + Logo margin-top*/
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        z-index: 1000; /* Asegura que la ventana emergente esté en la parte superior */
+        height: 400px;
+        transform: translateX(-150%);
+        transition: all .45s;  
+    }
+
+    .header-container .nav li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font: 16px;
+        margin: 15px;
+        position: relative;
+        font-family: Arial, sans-serif;
+        margin-top: 30px;
+        font-size: 20px;
+    }
+
+    .header-container  .nav-open{
+        display: flex;
+        position: fixed;
+        justify-content: center;
+        top: 80px;  /*Logo height + Logo margin-top*/
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        z-index: 1000; /* Asegura que la ventana emergente esté en la parte superior */
+        opacity: 1; /* Hace que la ventana emergente sea visible */
+        transition: opacity 1s ease-in-out; /* Agrega una transición suave */
+        height: 400px;
+        transform: translateY(0%);
+        transition: all .45s;
+        font-weight: bold;
+    }
+
+    .header-container  .icon-mark {
+        display: flex;
+        height: 25px;
+        width: 25px;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        margin-right: 15px;
+        margin-top: 10px;
+    }
+
+
+    .header-container  .icon-bars{
+        display: flex;
+        width: 25px;
+        height: 25px;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        margin-right: 10px;
+        margin-top: 10px;
+    }
+
+
+    .header-container  .nav-open li{
+        margin-top: 30px;
+        font-size: 20px;
+    }
+
+
+    /*.header-container  .icon-bars-open{
+        display: none;
+    }*/
+
+   
+    .header-container  .icon-bars-open{
+        transform: translate(-40px);
+        background: transparent;
+    }
+
+
+   .logo {
+        height: auto;
+        max-height: 60px;
+        margin-right: 0;
+   }
+
+
+
+}
+
+

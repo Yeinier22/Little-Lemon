@@ -1,15 +1,4 @@
 
- .hero-container{
-    display: flex;
-    background-color: rgb(86, 76, 76);
-    color: white;
-    margin-left: 20px;
-    margin-right: 20px;
-    justify-content: space-between;
-    position: relative;
-    align-items: center;
-}
-
 .hero-container{
     display: flex;
     background-color: rgb(86, 76, 76);
@@ -17,8 +6,15 @@
     margin-left: 20px;
     margin-right: 20px;
     justify-content: space-between;
-    position: relative;
-    align-items: center;
+    margin-top: 70px;
+    width: 100%;
+}
+
+.hero-description {
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    margin-top: 20px;
 }
 
 .hero-description h1{
@@ -30,30 +26,26 @@
     font-weight: bold;
 }
 
-.hero-description {
-    margin-left: 15%;
-    margin-top: 0;
-}
+
 
 .hero-description button{
     color: black;
     background-color: rgb(234, 198, 49);
     border-radius: 10px;
     padding: 5px;
-    margin-bottom: 20px;
     margin-top: 5px;
     width: 150px;
     font-weight: bold;
 }
 
 #location {
-  margin-top: 0px;
-  margin-bottom: 5px;
-  padding: 0;
-  color: white;
-  font-size: 20px;
-  font-family: 'Times New Roman', Times, serif;
-  font-weight: bold;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    padding: 0;
+    color: white;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
   
 }
 
@@ -63,14 +55,61 @@
 
 
 .hero-image {
-  
+    position: relative;
+    margin-top: 20px;
+    width: 320px;
+    height: 250px;
+    margin-left: 30px;
+    margin-right: 40px;
 }
 
 .hero-image img {
-    height: 270px;
+    height: 320px;
+    width: 320px;
+    max-height: 320px;
     border-radius: 10px;
-   position: absolute;
     right: 0;
-    top: 20px;
-    margin-right: 15%; 
+    position: absolute;
+    height: auto;
+    width: 100%;
+}
+
+
+
+
+@media (max-width: 945px){
+    .hero-container{
+    margin-left: 0px;
+    margin-right: 0px;
+    }
+
+    .hero-description h1{
+        color: rgb(183, 156, 39);
+        font-family: 'Times New Roman', Times, serif;
+        padding: 0;
+        margin-bottom: 0;
+        font-size: 25px;
+        font-weight: bold;
+    }
+
+    .hero-description {
+        padding: 10px;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+
+    .hero-image {
+        position: relative;
+        margin-top: 20px;
+        width: 320px;
+        height: 250px;
+        margin-left: 15px;
+        margin-right: 10px;
+    }
+
+    #description {
+        white-space: nowrap;
+        font-size: 14px;
+    }
 }
