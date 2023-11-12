@@ -1,16 +1,16 @@
-import Footer from "./Components/Footer";
-import Header from "./Components/Header";
-import Main from "./Components/Main";
 import React from "react";
+import HomePage from "./HomePage";
+import { Routes, Route } from "react-router-dom";
+import Reservation from "./Components/Reservations/Reservations";
 
 function App() {
   return (
-    <>
-      <Header />
-         <Main/>
-      <Footer /> 
-    </>
+    <Routes>
+      <Route exact path="/" element={<HomePage />} />
+      <Route path="/booking" element={<Reservation />} />
+      </Routes>
   );
 }
 
 export default App;
+

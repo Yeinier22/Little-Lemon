@@ -1,0 +1,161 @@
+.background-reservation-container {
+    background-image:  url("wallpaper-back.jpg");
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+}
+
+.reservation-container {
+    max-width: 640px; /* Establece un ancho máximo según tus necesidades */
+    margin: 0 auto; /* Centra horizontalmente el elemento en el contenedor padre */
+    padding: 20px; 
+    border: 1px solid red;
+    background-color: white;
+    margin-top: 50px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.reservation-link {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.reservation-link button {
+    background: none;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+
+
+.title-reservation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin-bottom: 60px;
+}
+
+.title-reservation-details {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.reservation-container h2{
+    font-family: "BrandonText", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        font-size: 1.5rem;
+        font-weight: bold;  
+        color: black;
+}
+
+.state-reservation{
+    border-bottom: 1px solid rgb(208, 203, 203);
+    margin-bottom: 50px;
+    margin-left: 20px;
+}
+
+.state-reservation ul {
+    display: flex;
+}
+
+.state-reservation ul li {
+    margin-right: 30px;
+  }
+
+  .state-reservation ul li.step1 {
+    color: red;
+    border-bottom: 2px solid red;
+    padding-bottom: 20px; /* Agrega un espacio entre el texto y la línea roja */
+}
+
+   span{
+    margin-bottom: 20px;
+  }
+
+
+  .reservation-option {
+
+  }
+
+.reservation-selector {
+    display: flex;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 30px;
+}
+
+.reservation-option .available-options {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+
+.reservation-option .selector{
+    border: 0.5px solid gray;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box; /* Incluye el borde en el ancho y alto total */
+    height: 50px;
+    width: 130px;
+    text-align: center;
+}
+
+.reservation-option .selector.people{
+    border-top-left-radius: 5px ;
+    border-bottom-left-radius:5px ;
+}
+
+  
+.reservation-option .selector.available{
+    border-top-right-radius: 5px ;
+    border-bottom-right-radius:5px ;
+    background-color: red;
+    width: 160px;
+    font-weight: bold;
+}
+
+.reservation-option .selector.available:hover{
+    opacity: 0.5;
+}
+
+.available-reservation {
+    display: flex;
+}
+
+
+.reservation-bookings{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.reservation-bookings button{
+    display: flex;
+    color: white;
+    font-weight: bold;
+    width: 100px;
+    height: 35px;
+    background-color: red;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+}
+
+.reservation-bookings .button-Available:hover{
+    opacity: 0.5;
+}
+
+.reservation-bookings .button-NoAvailable {
+    background-color: rgb(213, 205, 205);
+    cursor: not-allowed; /* Cambia el cursor a 'no permitido' */
+    pointer-events: none; /* Deshabilita eventos de puntero */
+}
+
+
