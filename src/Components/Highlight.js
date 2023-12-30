@@ -1,5 +1,5 @@
-import { Box, VStack, Heading, HStack, Button } from "@chakra-ui/react";
-import Card from "./Card.js";
+import { Box, Heading, HStack, Button } from "@chakra-ui/react";
+
 import React, { useEffect, useState } from "react";
 import "../Styles/Highligh.css";
 //import "react-responsive-carousel/lib/styles/carousel.min.css";

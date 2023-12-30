@@ -1,4 +1,3 @@
-import { Heading, VStack, HStack } from "@chakra-ui/react";
 import CardReview from "../Card-review";
 import React from "react";
 import "../Styles/Review.css"
