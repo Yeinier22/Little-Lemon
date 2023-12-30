@@ -20,7 +20,7 @@ const Available = ({ people, date, hour }) => {
   };
 
   return (
-    <div>
+    <div className="selector-container">
       <button className={"selector available"} type="submit" onClick={calculate}>
         Find a table
       </button>

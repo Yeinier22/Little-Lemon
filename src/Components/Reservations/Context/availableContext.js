@@ -10,11 +10,13 @@ export const AvailableProvider = ({ children }) => {
   const [isTableAvailable, setIsTableAvailable] = useState(false);
   const [results, setResults] = useState([]);
   const [clicked, setClicked] = useState(false);
+  const [showStep, setShowStep] = useState(false);
 
-  const handleAvailabilityChange = (tableAvailable, calculatedResults, isClicked) => {
+  const handleAvailabilityChange = (tableAvailable, calculatedResults, isClicked, kkkk) => {
     setIsTableAvailable(tableAvailable);
     setResults(calculatedResults);
     setClicked(isClicked);
+    setShowStep(kkkk);
   };
 
   return (
@@ -23,7 +25,8 @@ export const AvailableProvider = ({ children }) => {
         isTableAvailable,
         results,
         clicked,
-        handleAvailabilityChange
+        showStep,
+        handleAvailabilityChange,      
       }}
     >
       {children}

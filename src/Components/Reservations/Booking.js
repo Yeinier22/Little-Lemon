@@ -58,7 +58,6 @@ results.sort((a, b) => {
     const dateB = new Date(`2000-01-01 ${b.hour}`);
     return dateA - dateB;
   });
-  console.log(results);
     return results;
   }
 

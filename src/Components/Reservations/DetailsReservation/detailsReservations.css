@@ -1,0 +1,95 @@
+.FormSection{
+    display: flex;
+    flex: 1;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .form-timer {
+    margin-bottom: 15px;
+  }
+  
+  fieldset {
+    display: flex;
+    width: 200px;
+    padding: 16px;
+    padding-bottom: 0;
+    flex-direction: column;
+    border-style: none;
+  }
+  
+
+  sup {
+    color: red;
+    top: -2px;
+    font-size: 95%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+  
+  input,
+  select {
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    height: 32px;
+    padding: 0 8px;
+  }
+  
+  .Field {
+    position: relative;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .FieldError {
+    position: absolute;
+    bottom: 8px;
+    color: red;
+    font-size: 12px;
+  }
+
+  .formField-descriptionReserv {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+  padding: 0;
+  }
+  
+  .form-submit button{
+    margin-top: 10px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .form-submit button:disabled{
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  .Field select .Optional{
+    background-color: field;
+  }
+
+  .formField {
+    margin-right: 25px;
+
+  }
+
+  @media (max-width: 550px) {
+    .formField-descriptionReserv {
+      flex-wrap: wrap;
+      flex-direction: column-reverse;
+    }
+
+    .dateReserv-container {
+      margin-bottom: 30px;
+    }
+
+    .state-reservation {
+      margin-bottom: 20px;
+    }
+
+  }

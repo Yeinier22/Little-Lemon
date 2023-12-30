@@ -15,7 +15,7 @@ const Rating=({rating})=> {
     ))}
     {halfStart && <FontAwesomeIcon icon={faStarHalfStroke} color="gold"/>}
     {[...Array(5-fullStart-(halfStart ? 1 :0))].map((_, index) =>(
-        <FontAwesomeIcon icon={regularStar} color="gold"/>
+        <FontAwesomeIcon icon={regularStar} key={index} color="gold"/>
     ))}
     </div>
     )

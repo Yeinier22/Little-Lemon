@@ -1,0 +1,14 @@
+.dataReserv-container{
+    margin-top: 20px;
+}
+
+.dataReserv{
+    display: flex;
+    margin-top: 10px;
+}
+
+.dataReserv p{
+    margin-left: 10px;
+}
+
+

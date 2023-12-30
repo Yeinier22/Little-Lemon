@@ -43,7 +43,7 @@ const Testimonial = () => {
       <div className="card-review">
         {reviews.map((project, index) => (
           <CardReview
-            key={project.name1}
+            key={project.name}
             color={project.color}
             name={project.name}
             review={project.review}

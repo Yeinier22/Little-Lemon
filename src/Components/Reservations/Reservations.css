@@ -4,18 +4,20 @@
     height: 100vh;
     width: 100vw;
     position: absolute;
+    margin-right: 5px;
+    margin-left: 5px;
 }
 
 .reservation-container {
     max-width: 640px; /* Establece un ancho máximo según tus necesidades */
     margin: 0 auto; /* Centra horizontalmente el elemento en el contenedor padre */
     padding: 20px; 
-    border: 1px solid red;
     background-color: white;
     margin-top: 50px;
     position: relative;
     padding-left: 20px;
 }
+
 
 .reservation-link {
     display: flex;
@@ -66,7 +68,13 @@
     margin-right: 30px;
   }
 
-  .state-reservation ul li.step1 {
+  .state-reservation ul li.step1-red {
+    color: red;
+    border-bottom: 2px solid red;
+    padding-bottom: 20px; /* Agrega un espacio entre el texto y la línea roja */
+}
+
+.state-reservation ul li.step2-red {
     color: red;
     border-bottom: 2px solid red;
     padding-bottom: 20px; /* Agrega un espacio entre el texto y la línea roja */
@@ -77,15 +85,10 @@
   }
 
 
-  .reservation-option {
 
-  }
-
-.reservation-selector {
+.reservation-option {
     display: flex;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-bottom: 30px;
+    flex-direction: column;
 }
 
 .reservation-option .available-options {
@@ -94,22 +97,36 @@
 }
 
 
-.reservation-option .selector{
+/*------------------------------------------------
+--------------------------------------------------*/
+/*Para el boton Available hay un with predeterminado de 160px
+con flex:1 garantizo que los otros tres componentes ocupen 1/3 cada uno*/
+.reservation-selector .selector-container{
+    display: flex;
+    flex: 1;
+}
+
+.reservation-selector {
+    display: flex;
+    flex-wrap: nowrap;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 30px;
+    height: 100px;
+}
+
+/*Buttons    People, Date, Available, Hour */
+.reservation-selector .selector{
     border: 0.5px solid gray;
     padding: 0;
     margin: 0;
     box-sizing: border-box; /* Incluye el borde en el ancho y alto total */
     height: 50px;
-    width: 130px;
+    width: 100%;
     text-align: center;
 }
 
-.reservation-option .selector.people{
-    border-top-left-radius: 5px ;
-    border-bottom-left-radius:5px ;
-}
-
-  
+/*Button red available*/
 .reservation-option .selector.available{
     border-top-right-radius: 5px ;
     border-bottom-right-radius:5px ;
@@ -117,6 +134,31 @@
     width: 160px;
     font-weight: bold;
 }
+
+@media (max-width: 630px) {
+    .reservation-selector {
+        flex-wrap: wrap;
+    }
+    .reservation-selector .selector-container {
+        flex:none;
+        width: 33.33%;
+    }
+    .reservation-selector .selector-container:last-child {
+        width: 100%;
+    }
+    .reservation-selector .selector:last-child {
+        width: 100%;
+    }
+
+}
+
+
+.reservation-option .selector.people{
+    border-top-left-radius: 5px ;
+    border-bottom-left-radius:5px ;
+}
+
+
 
 .reservation-option .selector.available:hover{
     opacity: 0.5;
@@ -131,6 +173,7 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
+    flex-wrap: wrap;
 }
 
 .reservation-bookings button{
@@ -146,6 +189,8 @@
     justify-content: space-between;
     align-items: center;
     padding: 5px;
+    margin-top: 10px;
+    margin-right: 5px;
 }
 
 .reservation-bookings .button-Available:hover{
@@ -157,5 +202,11 @@
     cursor: not-allowed; /* Cambia el cursor a 'no permitido' */
     pointer-events: none; /* Deshabilita eventos de puntero */
 }
+
+.selector-container .available {
+    background: none;
+}
+
+
 
 

@@ -1,3 +1,62 @@
+.special-container {
+    background-color: #ECEEED ;
+    cursor: pointer;
+    align-items: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    height: 100%;
+}
+
+.special-img img{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.special-description-container {
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    flex-grow: 1;
+    height: 100%;
+}
+
+.special-price {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.special-price p {
+    color: red;
+}
+
+.special-description {
+    margin-bottom: 30px;
+    justify-content:left;
+    align-self: flex-start;
+}
+
+
+
+.special-descrip-footer {
+   margin-top: auto;
+   display: flex;
+   align-items: center;
+   margin-bottom: 30px;
+}
+
+.special-descrip-footer p{ 
+    margin-right: 10px;
+}
+
+
+
+
 
 @media (max-width: 500px) {
 
@@ -18,7 +77,6 @@
 #special-heading{
     margin-left: 5px;
     margin-right: 5px;
-    justify-content: center;
     align-items: center;
 }
 
@@ -43,5 +101,17 @@ Button {
   .carousel .control-prev.control-arrow:before {
     border-right: 8px solid #000 !important; 
   }
+
+  .special-description p{
+    margin-bottom: 30px;
+    justify-content:left;
+    align-self: flex-start;
+    text-align: left;
+}
+
+.special-descrip-footer {
+    margin-bottom: 30px;
+ }
+
 
 }

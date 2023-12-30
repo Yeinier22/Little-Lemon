@@ -1,17 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useAvailable } from "./Context/availableContext";
+import { useButton } from "./Context/SelectButtonContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUtensils } from "@fortawesome/free-solid-svg-icons";
 import PickOption from "./pickOption";
+import { UserContext } from "./Reservations";
 
 const AvailableOptions = ({ showDetails, setShowDetails }) => {
   const { isTableAvailable, results, clicked } = useAvailable();
-  const [selectedButton, setSelectedButton] = useState(null);
+  const {selectedButton, handleClick } = useButton();
+  const {setShowStep, setShowBack} = useContext(UserContext);
 
-  const handleClick = (index) => {
+  const handleClickButton = (index) => {
     const informationButton = results[index];
     setShowDetails(true);
-    setSelectedButton(informationButton);
+    handleClick(informationButton);
+    setShowStep(true);
+    setShowBack(true);
   };
 
   useEffect(() => {
@@ -55,11 +60,11 @@ return formatedDate;
                 return (
                   <button
                     className={
-                      "button" + (isAvailable ? "Available" : "-NoAvailable")
+                      "button" + (isAvailable ? "-Available" : "-NoAvailable")
                     }
                     key={index}
                     disabled={!isAvailable}
-                    onClick={()=>handleClick(index)}
+                    onClick={()=>handleClickButton(index)}
                   >
                     <FontAwesomeIcon icon={faUtensils} size="1.5x" />
                     {result.hour}
