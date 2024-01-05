@@ -71,7 +71,7 @@ const HoursSelector = ({selectedValue, onChange, date}) => {
 
   return (
     <div className="selector-container">
-        <select className="selector" value={selectedValue} onChange={handlechange}>
+        <select className="selector" value={selectedValue} onChange={handlechange} data-testid="hours-selector">
           {hours.map((hour, index) => (
             <option key={index} value={hour} label={hour} />
           ))}
