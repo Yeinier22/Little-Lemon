@@ -1,6 +1,6 @@
 import React from "react";
 import { useAvailable } from "./Context/availableContext";
-import calculateTableAssignment from "./Ocuppancy";
+import {calculateTableAssignment, fetchAPI} from "./Ocuppancy";
 import bookings from "./Booking";
 import "./Reservations.css";
 
@@ -8,15 +8,17 @@ const Available = ({ people, date, hour }) => {
   const { handleAvailabilityChange } = useAvailable();
 
   const calculate = () => {
-    const availability = calculateTableAssignment(people, hour, date);
-    const isTableAvailable = availability.isInsideAvailable || availability.isOutsideAvailable;
+   fetchAPI({ people, date, hour }).then((result)=>{
+      const isTableAvailable = result.isInsideAvailable || result.isOutsideAvailable;
 
-    if (isTableAvailable) {
-      const calculatedResults = bookings(people, hour, date);
-      handleAvailabilityChange(isTableAvailable, calculatedResults, true);
-    } else {
-      handleAvailabilityChange(false, [], true);
-    }
+      if (isTableAvailable) {
+        bookings(people, hour, date).then((calculatedResults) => {
+          handleAvailabilityChange(isTableAvailable, calculatedResults, true);
+        });
+      } else {
+        handleAvailabilityChange(false, [], true);
+      }
+    });
   };
 
   return (
