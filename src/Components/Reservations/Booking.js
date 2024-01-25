@@ -1,11 +1,11 @@
 import { fetchAPI } from "./Ocuppancy";
 
-async function bookings(people, hour, day) {
+async function bookings(people, hour, day, occupation) {
   const results = [];
 
   try {
     // Obtener la disponibilidad actual utilizando la API
-    const currentAvailability = await fetchAPI({ people, date: day, hour });
+    const currentAvailability = await fetchAPI({ people, date: day, hour, occupation });
 
     results.push({
       isInsideAvailable: currentAvailability.isInsideAvailable,
@@ -32,7 +32,7 @@ async function bookings(people, hour, day) {
       });
 
       // Obtener la disponibilidad para cada hora utilizando la API
-      const newAvailability = await fetchAPI({ people, date: day, hour: newHour });
+      const newAvailability = await fetchAPI({ people, date: day, hour: newHour, occupation });
 
       if (horaDate.getHours() < 12 || horaDate.getHours() > 22) {
         newAvailability.isInsideAvailable = false;

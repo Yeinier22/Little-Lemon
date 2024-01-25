@@ -1,8 +1,53 @@
-import { getHours, getMinutes, setHours } from "date-fns";
+import { getHours, getMinutes, getMonth, setHours } from "date-fns";
+import { useAvailable } from "./Context/availableContext";
+
+const monthNames = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+//function to extract Month and day in format Janunary 16 to compare
+function extractDate(date) {
+  const month = monthNames[date.getMonth()];
+  const gettingDay = date.getDate();
+
+  const formatedDate = `${month} ${gettingDay}`;
+  return formatedDate;
+}
+
+
+const effectiveBooking = (day, hour, occupation) => {
+  let restOutside = 0;
+let restInside = 0;
+  if (occupation.length > 0) {
+    const pickDate = extractDate(day);
+    for (const occup of occupation) {
+      const arrayDate = extractDate(occup.date);
+      if (arrayDate === pickDate && occup.hour === hour) {
+        if (occup.place === "inside") {
+          restInside = restInside + occup.people;
+        } else if (occup.place === "outside") {
+          restOutside += occup.people;
+        }
+      }
+    }
+  }
+  return { restInside, restOutside };
+};
 
 const occupancyAvailability = {
-  outside: 32,
-  inside: 50,
+  outside: 20,
+  inside: 28,
 };
 
 const rangeSchedule = {
@@ -19,7 +64,7 @@ const rangeSchedule = {
   thirdSlot: {
     hourStart: "7:00",
     hourFinal: "10:00",
-    occupancyPercent: 95,
+    occupancyPercent: 90,
   },
 };
 
@@ -43,9 +88,7 @@ function findTimeSlot(hour2, rangeSchedule) {
     const startTime = convertStringHour(slot.hourStart);
     const endTime = convertStringHour(slot.hourFinal);
 
-
     const formattedHour2 = hour2.slice(0, -2);
-    console.log("formattedHour2:", formattedHour2);
     const currentTime = convertStringHour(formattedHour2);
 
     if (currentTime >= startTime && currentTime <= endTime) {
@@ -68,13 +111,10 @@ function finalPercent(day, hour) {
   const today1 = new Date(today);
   today1.setHours(0, 0, 0, 0);
 
-
   const converToday = new Date(day);
   converToday.setHours(0, 0, 0, 0);
 
   const timeSlot = findTimeSlot(hour, rangeSchedule);
-
-
   if (timeSlot === "out of range") {
     percentOccupation = 100;
   } else {
@@ -82,22 +122,21 @@ function finalPercent(day, hour) {
     const differenceMiliseconds = converToday - today1;
     // Calculate difference in days
     const differenceDays = differenceMiliseconds / (1000 * 60 * 60 * 24);
-    
+
     percentOccupation = Math.max(
       0,
       rangeSchedule[timeSlot].occupancyPercent - 10 * differenceDays
     );
   }
-  
 
   return percentOccupation;
 }
 
-function calculateTableAssignment(people, hour, date) {
-
+function calculateTableAssignment(people, hour, date, occupation) {
   const finalPercent1 = finalPercent(date, hour);
   const timeSlot1 = findTimeSlot(hour, rangeSchedule);
-  console.log("timeSlot:" + finalPercent1);
+  const grabbedReser = effectiveBooking(date, hour, occupation);
+
 
   const totalAvailavility =
     occupancyAvailability.outside + occupancyAvailability.inside;
@@ -106,12 +145,13 @@ function calculateTableAssignment(people, hour, date) {
   //is each day > today rest 10% until it reaches 0%. For example, same day(factor percent 0), 7:00pm, 44-(0.95)*44  =   2 inside
   const realInsideCapacity =
     occupancyAvailability.inside -
-    Math.ceil((occupancyAvailability.inside * finalPercent1) / 100);
+    Math.ceil((occupancyAvailability.inside * finalPercent1) / 100) -(grabbedReser ? grabbedReser.restInside : 0);
 
   //Real capacity outside = %occupancy*(total availability) - real capacity inside
   const realOutsideCapacity =
-    Math.ceil(totalAvailavility * ((100 - finalPercent1) / 100)) -
-    realInsideCapacity;
+    occupancyAvailability.outside -
+    Math.ceil((occupancyAvailability.outside * finalPercent1) / 100) -(grabbedReser ? grabbedReser.restOutside : 0)
+   
 
   const parts = people.split(" ");
   const people1 = parseInt(parts[0]);
@@ -127,14 +167,27 @@ function calculateTableAssignment(people, hour, date) {
   };
 }
 
-const fetchAPI = ({ people, date, hour }) => {
+const fetchAPI = ({ people, date, hour, occupation }) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      const result = calculateTableAssignment(people, hour, date);
-      console.log("Data from fetchAPI:", result);
-        resolve(result);
+      const result = calculateTableAssignment(people, hour, date, occupation);
+      resolve(result);
     }, 200);
   });
 };
 
-export  {fetchAPI, calculateTableAssignment};
+const submitAPI = (formData, setOccupation) => {
+  setOccupation((prevArray) => [...prevArray, formData]);
+
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (formData) {
+        resolve(true); // Simulate successful submission
+      } else {
+        reject(new Error("Form submission failed."));
+      }
+    }, 200); // Simulate API delay
+  });
+};
+
+export { fetchAPI, calculateTableAssignment, submitAPI };

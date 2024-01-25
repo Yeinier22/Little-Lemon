@@ -15,11 +15,14 @@ export const UserContext = createContext();
 
 const Reservation = () => {
   const [selectPeople, setSelectPeople] = useState("2 people");
-  const [selectDate, setSelectedDate] = useState(new Date());
+  const today=new Date();
+  today.setDate(today.getHours()>21 ? today.getDate()+1: today.getDate())
+  const [selectDate, setSelectedDate] = useState(today);
   const [showDetails, setShowDetails] = useState(false);
   const [showStep, setShowStep] = useState(false);
   const [firstRed, setFirstRed] = useState(true);
   const [showBack, setShowBack] = useState(false);
+  const [occupation, setOccupation]=useState([]);
   
 
   useEffect(() => {
@@ -40,7 +43,7 @@ const Reservation = () => {
 
   return (
     <UserContext.Provider
-      value={{ showStep, setShowStep, firstRed, setFirstRed, showBack, setShowBack}}
+      value={{ showStep, setShowStep, firstRed, setFirstRed, showBack, setShowBack, setOccupation}}
     >
       <div className="background-reservation-container">
         <div className="reservation-container">
@@ -88,6 +91,7 @@ const Reservation = () => {
                     people={selectPeople}
                     date={selectDate}
                     hour={selectHour}
+                    occupation={occupation}
                   />
                 </div>
               )}

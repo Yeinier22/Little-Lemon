@@ -13,33 +13,35 @@ export const generateHours = (date) => {
   const date1=date;
   const date1Day=date1.getDate();
   const date1Mounth=date1.getMonth();
-  
+
+
 
   const isSameDate=currentDay===date1Day && currentMonth===date1Mounth; //Same day and month than current date
-  
+
   if(isSameDate)  {
-    const date2 = new Date(currentDate);
-    date2.setMinutes(date2.getMinutes() + 60);
-    const hour1= date2.getHours();
-    const date3= new Date(currentDate);
-    date3.setHours(0,0,0,0);
-    date3.setHours(hour1);
-    date3.setMinutes(date3.getMinutes() + 30);
-    
-    if(date3 < date2){
-      date3.setMinutes(date3.getMinutes()+30)
+    const date4 = new Date(currentDate)//current date
+    const date5 = new Date(currentDate)
+    date5.setHours(12,0,0,0);//12:00pm
+    const differenceInMilliseconds = date4 - date5;
+    const differenceInMinutes = differenceInMilliseconds / (1000 * 60);
+    if(differenceInMinutes<-59){//at least 1h difference to 12:00pm
+      hour=12;
+      minutes=0;
+    }else if(differenceInMinutes >= -59 && differenceInMinutes < 540){
+      if(date4.getMinutes()<29){
+        hour=(date4.getHours()+1);
+        minutes=30;
+      } else{
+        hour=(date4.getHours()+2);
+        minutes=0;
+      }
     }
-    if(date3.getHours()<12){
-      date3.setHours(12);
-    }
-    hour=date3.getHours();
-    minutes=date3.getMinutes();
   } else {
     hour=12;
     minutes=0;
   }
 
- 
+
 
   const startTime = new Date();
   startTime.setHours(hour, minutes, 0); // Set hour to start at 12:00 PM
@@ -58,8 +60,15 @@ export const generateHours = (date) => {
   }
 
   return hoursOptions;
-};
 
+}
+
+
+
+
+
+
+//HoursSelector use generateHours  component
 const HoursSelector = ({selectedValue, onChange, date}) => {
   const hours = generateHours(date);
 
@@ -81,7 +90,6 @@ const HoursSelector = ({selectedValue, onChange, date}) => {
 };
 
 export default HoursSelector;
-
 
 
 

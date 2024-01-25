@@ -8,8 +8,8 @@ import { UserContext } from "./Reservations";
 
 const AvailableOptions = ({ showDetails, setShowDetails }) => {
   const { isTableAvailable, results, clicked } = useAvailable();
-  const {selectedButton, handleClick } = useButton();
-  const {setShowStep, setShowBack} = useContext(UserContext);
+  const { selectedButton, handleClick } = useButton();
+  const { setShowStep, setShowBack } = useContext(UserContext);
 
   const handleClickButton = (index) => {
     const informationButton = results[index];
@@ -19,69 +19,57 @@ const AvailableOptions = ({ showDetails, setShowDetails }) => {
     setShowBack(true);
   };
 
-  useEffect(() => {
-    // Puedes realizar alguna lógica adicional aquí si es necesario
-    console.log('Available component updated with show:', showDetails);
-  }, [showDetails]);
 
   const monthNames = [
-    "January", "February", "March", "April", "May", "June", 
+    "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
   ];
 
-const getDate=()=>{
-
-const month = monthNames[selectedButton.day.getMonth()];
-
-const day = selectedButton.day.getDate();
-let dayWithSuffix;
-if (day >= 11 && day <= 13) {
-  dayWithSuffix = `${day}th`;
-} else {
-  const suffixes = ["st", "nd", "rd"];
-  dayWithSuffix = `${day}${suffixes[day % 10 - 1] || "th"}`;
-}
-
-const formatedDate = `${month} ${dayWithSuffix}`;
-return formatedDate;
+  const getDate = () => {
+    const month = monthNames[selectedButton.day.getMonth()];
+    const day = selectedButton.day.getDate();
+    let dayWithSuffix;
+    if (day >= 11 && day <= 13) {
+      dayWithSuffix = `${day}th`;
+    } else {
+      const suffixes = ["st", "nd", "rd"];
+      dayWithSuffix = `${day}${suffixes[day % 10 - 1] || "th"}`;
+    }
+    const formatedDate = `${month} ${dayWithSuffix}`;
+    return formatedDate;
   }
-
-
 
   return (
     <div className="reservation-bookings">
-      {
-        clicked &&
-          (isTableAvailable ? (
-            !showDetails ? (
-              results.map((result, index) => {
-                const isAvailable =
-                  result.isInsideAvailable || result.isOutsideAvailable;
-                return (
-                  <button
-                    className={
-                      "button" + (isAvailable ? "-Available" : "-NoAvailable")
-                    }
-                    key={index}
-                    disabled={!isAvailable}
-                    onClick={()=>handleClickButton(index)}
-                  >
-                    <FontAwesomeIcon icon={faUtensils} size="1.5x" />
-                    {result.hour}
-                  </button>
-                );
-              })
+      {clicked &&
+        (isTableAvailable ? (
+          !showDetails ? (
+            results && results.length > 0 ? (
+              results.map((result, index) => (
+                <button
+                  className={"button" + (result.isInsideAvailable || result.isOutsideAvailable ? "-Available" : "-NoAvailable")}
+                  key={index}
+                  disabled={!result.isInsideAvailable && !result.isOutsideAvailable}
+                  onClick={() => handleClickButton(index)}
+                >
+                  <FontAwesomeIcon icon={faUtensils} size="1.5x" />
+                  {result.hour}
+                </button>
+              ))
             ) : (
-              <PickOption 
-                    hour={selectedButton.hour}
-                    date={getDate()}
-              />
+              <div>No hay resultados disponibles</div>
             )
           ) : (
-            // ? (
-            <div>Por favor, elija otros datos</div>
-          )) 
-      }{" "}
+            <PickOption
+              hour={selectedButton.hour}
+              date={getDate()}
+              inside={selectedButton.isInsideAvailable}
+              outside={selectedButton.isOutsideAvailable}
+            />
+          )
+        ) : (
+          <div>Please choose different data</div>
+        ))}
     </div>
   );
 };

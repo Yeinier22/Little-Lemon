@@ -3,7 +3,7 @@ import "./PickOption.css";
 import FormSection from "./DetailsReservation/DetailsReservation";
 import { UserContext } from "./Reservations";
 
-const PickOption = ({ date, hour }) => {
+const PickOption = ({ date, hour, inside, outside }) => {
   const [showForm, setShowForm] = useState(false);
   const [place, setPlace] = useState();
   const {setShowStep, setFirstRed} = useContext(UserContext);
@@ -33,11 +33,11 @@ const PickOption = ({ date, hour }) => {
         <div className="pick-options">
           <div className="pick-indoor">
             <p>Indoor</p>
-            <button onClick={handleSelectIndoor}>Select</button>
+            <button onClick={handleSelectIndoor} disabled={!inside}>Select</button>
           </div>
           <div className="pick-outdoor">
             <p>Outdoor</p>
-            <button onClick={handleSelectOutdoor}>Select</button>
+            <button onClick={handleSelectOutdoor} disabled={!outside}>Select</button>
           </div>
         </div>
       </div> )}

@@ -5,19 +5,48 @@ import { useState, useContext, useEffect } from "react";
 import DateReservation from "./DateReservation";
 import FormTimer from "./timer";
 import { useAlert } from "../Context/alertContext";
+import { submitAPI } from "../Ocuppancy";
+import { useButton } from "../Context/SelectButtonContext";
+import { UserContext } from "../Reservations";
 
 const FormSection = ({place}) => {
 
   const {setIsOpen}=useAlert();
   const timer = FormTimer();
+  
+  const {setOccupation, occupation} = useContext(UserContext);
+  const { selectedButton } = useButton();
+  const selectHour=selectedButton.hour;
+  const pickDate = selectedButton.day
+
+  const people = selectedButton.people;
+  const parts = people.split(" ");
+  const people1 = parseInt(parts[0]);
+
+
+  const formData={date: pickDate,
+  hour: selectHour,
+  place: place,
+  people: people1
+    }
 
   const handleFormSubmit = () => {
     setIsOpen(true);
     // Establecer el temporizador en 0 cuando se envía el formulario
     timer.setTiempoRestante(0);
     timer.setFormularioCompletado(true)
+    
+    console.log("formData",formData)
+    submitAPI(formData, setOccupation)
+    .then(() => {
+      console.log("Form submitted successfully");
+    })
+    .catch(error => {
+      console.error("Form submission failed:", error.message);
+    });
   };
 
+  
   const formik = useFormik({
     initialValues: {
       firstName: "",
