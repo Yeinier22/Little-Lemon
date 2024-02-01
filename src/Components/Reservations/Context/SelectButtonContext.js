@@ -11,7 +11,7 @@ export const AvailableButton = ({ children }) => {
   };
 
   return (
-    <AvailableContext.Provider value={{ selectedButton, handleClick}}>
+    <AvailableContext.Provider value={{ selectedButton, handleClick,setSelectedButton}}>
       {children}
     </AvailableContext.Provider>
   );

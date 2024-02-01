@@ -11,7 +11,6 @@
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/user-event": "^13.5.0",
     "date-fns": "^2.30.0",
     "formik": "^2.4.5",
     "framer-motion": "^10.16.2",
@@ -49,6 +48,8 @@
     ]
   },
   "devDependencies": {
-    "@testing-library/react": "^14.1.2"
+    "@testing-library/react": "^14.1.2",
+    "@testing-library/user-event": "^14.5.2"
   }
+
 }

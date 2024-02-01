@@ -9,12 +9,12 @@ import { submitAPI } from "../Ocuppancy";
 import { useButton } from "../Context/SelectButtonContext";
 import { UserContext } from "../Reservations";
 
-const FormSection = ({place}) => {
+const FormSection = ({place, testing}) => {
 
   const {setIsOpen}=useAlert();
   const timer = FormTimer();
   
-  const {setOccupation, occupation} = useContext(UserContext);
+  const {setOccupation} = useContext(UserContext);
   const { selectedButton } = useButton();
   const selectHour=selectedButton.hour;
   const pickDate = selectedButton.day
@@ -32,11 +32,10 @@ const FormSection = ({place}) => {
 
   const handleFormSubmit = () => {
     setIsOpen(true);
-    // Establecer el temporizador en 0 cuando se envía el formulario
+    // Set timer to 0 when form is submitted
     timer.setTiempoRestante(0);
     timer.setFormularioCompletado(true)
     
-    console.log("formData",formData)
     submitAPI(formData, setOccupation)
     .then(() => {
       console.log("Form submitted successfully");
@@ -182,11 +181,11 @@ useEffect(() => {
                 <p>{formik.errors.specialRequest}</p>
               </div>
             </fieldset>
-          </div>
-          <DateReservation place={place}/>
+          </div> {testing ? null:
+          <DateReservation place={place}/> }
         </div>
         <div className="form-submit">
-          <button type="submit" disabled={!formik.dirty || !formik.isValid}>Submit</button>
+          <button type="submit" value="Submit" disabled={!formik.dirty || !formik.isValid}>Submit</button>
         </div>
       </form>
     </div>
