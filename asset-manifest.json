@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "/little-lemon/static/css/main.207a6fcf.css",
-    "main.js": "/little-lemon/static/js/main.1ce6cbbf.js",
-    "static/js/787.9c25e077.chunk.js": "/little-lemon/static/js/787.9c25e077.chunk.js",
-    "static/media/wallpaper-back.jpg": "/little-lemon/static/media/wallpaper-back.eeafeb00d5c412c31164.jpg",
-    "static/media/Mario and Adrian b.jpg": "/little-lemon/static/media/Mario and Adrian b.6ba0e06bfa9c1ea75109.jpg",
-    "static/media/restaurant chef B.jpg": "/little-lemon/static/media/restaurant chef B.4b4c2d26b514db32e8fc.jpg",
-    "static/media/bruchetta.jpg": "/little-lemon/static/media/bruchetta.cf31dedd214413cc2cbe.jpg",
-    "static/media/greek salad.jpg": "/little-lemon/static/media/greek salad.bed423a1fab5b210e347.jpg",
-    "static/media/restauranfood.jpg": "/little-lemon/static/media/restauranfood.809b5e440a76b35df4d0.jpg",
-    "static/media/lemon dessert.jpg": "/little-lemon/static/media/lemon dessert.a086dd89039719deff4b.jpg",
-    "static/media/beach-418742_640.jpg": "/little-lemon/static/media/beach-418742_640.2bdbdb1bd6e80aeed9be.jpg",
-    "static/media/mountains-1587287_640.jpg": "/little-lemon/static/media/mountains-1587287_640.df8273a1eaf09626afab.jpg",
-    "static/media/tree-736885_640.jpg": "/little-lemon/static/media/tree-736885_640.a948df326fd2bbf8e56d.jpg",
-    "static/media/logo.png": "/little-lemon/static/media/logo.8a256f93a3f4ddd93773.png",
-    "static/media/sunset-1373171_640.jpg": "/little-lemon/static/media/sunset-1373171_640.886a60f6c482ba5d7171.jpg",
-    "index.html": "/little-lemon/index.html",
-    "main.207a6fcf.css.map": "/little-lemon/static/css/main.207a6fcf.css.map",
-    "main.1ce6cbbf.js.map": "/little-lemon/static/js/main.1ce6cbbf.js.map",
-    "787.9c25e077.chunk.js.map": "/little-lemon/static/js/787.9c25e077.chunk.js.map"
+    "main.css": "/Little-Lemon/static/css/main.e3ea3e47.css",
+    "main.js": "/Little-Lemon/static/js/main.0dd9aa1d.js",
+    "static/js/787.9c25e077.chunk.js": "/Little-Lemon/static/js/787.9c25e077.chunk.js",
+    "static/media/wallpaper-back.jpg": "/Little-Lemon/static/media/wallpaper-back.eeafeb00d5c412c31164.jpg",
+    "static/media/Mario and Adrian b.jpg": "/Little-Lemon/static/media/Mario and Adrian b.6ba0e06bfa9c1ea75109.jpg",
+    "static/media/restaurant chef B.jpg": "/Little-Lemon/static/media/restaurant chef B.4b4c2d26b514db32e8fc.jpg",
+    "static/media/bruchetta.jpg": "/Little-Lemon/static/media/bruchetta.cf31dedd214413cc2cbe.jpg",
+    "static/media/greek salad.jpg": "/Little-Lemon/static/media/greek salad.bed423a1fab5b210e347.jpg",
+    "static/media/restauranfood.jpg": "/Little-Lemon/static/media/restauranfood.809b5e440a76b35df4d0.jpg",
+    "static/media/lemon dessert.jpg": "/Little-Lemon/static/media/lemon dessert.a086dd89039719deff4b.jpg",
+    "static/media/beach-418742_640.jpg": "/Little-Lemon/static/media/beach-418742_640.2bdbdb1bd6e80aeed9be.jpg",
+    "static/media/mountains-1587287_640.jpg": "/Little-Lemon/static/media/mountains-1587287_640.df8273a1eaf09626afab.jpg",
+    "static/media/tree-736885_640.jpg": "/Little-Lemon/static/media/tree-736885_640.a948df326fd2bbf8e56d.jpg",
+    "static/media/logo.png": "/Little-Lemon/static/media/logo.8a256f93a3f4ddd93773.png",
+    "static/media/sunset-1373171_640.jpg": "/Little-Lemon/static/media/sunset-1373171_640.886a60f6c482ba5d7171.jpg",
+    "index.html": "/Little-Lemon/index.html",
+    "main.e3ea3e47.css.map": "/Little-Lemon/static/css/main.e3ea3e47.css.map",
+    "main.0dd9aa1d.js.map": "/Little-Lemon/static/js/main.0dd9aa1d.js.map",
+    "787.9c25e077.chunk.js.map": "/Little-Lemon/static/js/787.9c25e077.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.207a6fcf.css",
-    "static/js/main.1ce6cbbf.js"
+    "static/css/main.e3ea3e47.css",
+    "static/js/main.0dd9aa1d.js"
   ]
 }
