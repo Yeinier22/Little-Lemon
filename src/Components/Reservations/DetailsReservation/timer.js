@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const FormTimer = () => {
   const [tiempoRestante, setTiempoRestante] = useState(300); // 5 ninutes

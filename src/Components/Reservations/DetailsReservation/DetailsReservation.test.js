@@ -1,17 +1,16 @@
-import userEvent from "@testing-library/user-event";
+//import userEvent from "@testing-library/user-event";
 import {
   render,
   act,
   screen,
   waitFor,
   fireEvent,
-  getByText,
 } from "@testing-library/react";
 import FormSection from "./DetailsReservation";
-import { AvailableAlert, useAlert } from "../Context/alertContext";
+import { AvailableAlert} from "../Context/alertContext";
 import { UserContext } from "../Reservations";
 import { AvailableButton, useButton } from "../Context/SelectButtonContext";
-import DateReservation from "./DateReservation";
+//import DateReservation from "./DateReservation";
 
 jest.mock("../Context/SelectButtonContext", () => ({
   ...jest.requireActual("../Context/SelectButtonContext"),

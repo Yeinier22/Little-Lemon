@@ -1,5 +1,13 @@
-import React, { useState } from "react";
+//import React, { useState } from "react";
 import {
+    Modal,
+    ModalOverlay,
+    ModalContent,
+    ModalHeader,
+    ModalBody,
+  } from '@chakra-ui/react'
+
+  /*import {
     Modal,
     ModalOverlay,
     ModalContent,
@@ -7,7 +15,7 @@ import {
     ModalFooter,
     ModalBody,
     ModalCloseButton,
-  } from '@chakra-ui/react'
+  } from '@chakra-ui/react'*/
 
   function BasicUsage({children, isOpen, onClose}) {
 

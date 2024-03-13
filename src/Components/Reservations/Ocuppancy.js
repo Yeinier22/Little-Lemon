@@ -1,5 +1,5 @@
-import { getHours, getMinutes, getMonth, setHours } from "date-fns";
-import { useAvailable } from "./Context/availableContext";
+//import { getHours, getMinutes, getMonth, setHours } from "date-fns";
+//import { useAvailable } from "./Context/availableContext";
 
 const monthNames = [
   "January",
@@ -138,8 +138,8 @@ function calculateTableAssignment(people, hour, date, occupation) {
   const grabbedReser = effectiveBooking(date, hour, occupation);
 
 
-  const totalAvailavility =
-    occupancyAvailability.outside + occupancyAvailability.inside;
+  /*const totalAvailavility =
+    occupancyAvailability.outside + occupancyAvailability.inside;*/
 
   //Real capacity inside= total capacity inside - (%occupancy-80,40 or 90%- factor percent)*occupancy inside. Factor percent
   //is each day > today rest 10% until it reaches 0%. For example, same day(factor percent 0), 7:00pm, 44-(0.95)*44  =   2 inside

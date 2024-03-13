@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, {  useContext } from "react";
 import { useAvailable } from "./Context/availableContext";
 import { useButton } from "./Context/SelectButtonContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -52,7 +52,7 @@ const AvailableOptions = ({ showDetails, setShowDetails }) => {
                   disabled={!result.isInsideAvailable && !result.isOutsideAvailable}
                   onClick={() => handleClickButton(index)}
                 >
-                  <FontAwesomeIcon icon={faUtensils} size="1.5x" />
+                  <FontAwesomeIcon icon={faUtensils} size="1x" />
                   {result.hour}
                 </button>
               ))

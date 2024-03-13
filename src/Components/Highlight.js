@@ -122,11 +122,10 @@ const Specials = () => {
             gridGap={8}
           >
             {specials.map((project) => (
-               <div className="special-container">
+               <div className="special-container"   key={project.title}>
                <div className="special-img">
                  <img
                    alt={project.title}
-                   key={project.title}
                    title={project.title}
                    description={project.description}
                    src={project.imageSrc}

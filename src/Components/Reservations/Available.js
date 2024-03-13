@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+//import React, { useState } from "react";
 import { useAvailable } from "./Context/availableContext";
-import {calculateTableAssignment, fetchAPI} from "./Ocuppancy";
+import { fetchAPI} from "./Ocuppancy";
 import bookings from "./Booking";
 import "./Reservations.css";
 

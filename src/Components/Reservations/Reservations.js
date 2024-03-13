@@ -3,13 +3,13 @@ import DateSelector from "./Date";
 import HoursSelector from "./Hora";
 import { generateHours } from "./Hora";
 import Available from "./Available";
-import { useState, useEffect, createContext, useContext } from "react";
+import { useState, useEffect, createContext} from "react";
 import { Link } from "react-router-dom";
 import "./Reservations.css";
 import AvailableOptions from "./Options";
 import { AvailableProvider } from "./Context/availableContext";
 import { AvailableButton } from "./Context/SelectButtonContext";
-import { useAvailable } from "./Context/availableContext";
+//import { useAvailable } from "./Context/availableContext";
 
 export const UserContext = createContext();
 
