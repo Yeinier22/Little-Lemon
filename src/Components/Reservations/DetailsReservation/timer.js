@@ -21,9 +21,9 @@ const FormTimer = () => {
     return () => clearTimeout(temporizador);
   }, [tiempoRestante, formularioCompletado]);
 
-  const manejarEnvioFormulario = () => {
+  /*const manejarEnvioFormulario = () => {
     setFormularioCompletado(true);
-  };
+  };*/
 
   const minutos = Math.floor(tiempoRestante / 60);
   const segundos=tiempoRestante % 60; 

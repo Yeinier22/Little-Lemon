@@ -87,6 +87,8 @@ useEffect(() => {
     }
   };
 
+  console.log(selectedOption);
+
   return (
     <div className="form-container">
       <div className="form-timer">
