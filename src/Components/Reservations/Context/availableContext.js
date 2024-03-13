@@ -2,7 +2,7 @@ import React, { createContext, useState, useContext } from "react";
 
 const AvailableContext = createContext();
 
-export const useAvailable = () => {
+export const useAvailable = () => {     //Available.js   Options.js
   return useContext(AvailableContext);
 };
 
@@ -10,7 +10,7 @@ export const AvailableProvider = ({ children }) => {
   const [isTableAvailable, setIsTableAvailable] = useState(false);
   const [results, setResults] = useState([]);
   const [clicked, setClicked] = useState(false);
-  const [showStep, setShowStep] = useState(false);
+  //const [showStep, setShowStep] = useState(false);
 
 
   const handleAvailabilityChange = (tableAvailable, calculatedResults, isClicked) => {
@@ -25,7 +25,7 @@ export const AvailableProvider = ({ children }) => {
         isTableAvailable,
         results,
         clicked,
-        showStep,
+        //showStep,
         handleAvailabilityChange,
       }}
     >
