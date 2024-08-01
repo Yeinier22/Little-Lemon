@@ -1,4 +1,3 @@
-https://little-lemmon-yeinier.netlify.app/
 
 # Getting Started with Create React App
 
