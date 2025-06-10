@@ -22,16 +22,17 @@ This project simulates a full restaurant reservation and ordering experience usi
 ## 🎨 Styled with custom CSS modules and clean component structure
 
 ## 🚀 Getting Started
-
+```
 git clone https://github.com/Yeinier22/Little-Lemon.git
 cd little-lemon
 npm install
 npm start
+```
 
 The app will run on http://localhost:3000.
 
 📁 Project Structure
-
+```
 /src
   ├── Components         # Reusable UI components
   ├── Styles             # CSS files
@@ -40,7 +41,7 @@ The app will run on http://localhost:3000.
   ├── App.js
   ├── HomePage.js
   └── index.js
-
+```
 🧪 Notes
 
 The reservation steps and available times are simulated.
@@ -55,7 +56,7 @@ Include screenshots showing:
 
 ![preview](Testimonials.jpg)
 
-![preview](BookTable.jpg)
+![preview](BookTable.png)
 
 
 📚 Credits
