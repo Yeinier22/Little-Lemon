@@ -1,6 +1,7 @@
 import { Box, Heading, HStack, Button } from "@chakra-ui/react";
 
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../Styles/Highligh.css";
 //import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "react-responsive-carousel/lib/styles/carousel.css";
@@ -36,6 +37,7 @@ const specials = [
 
 const Specials = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const checkIsMobile = () => {
@@ -72,8 +74,17 @@ const Specials = () => {
         <Heading as="h1" id="special-title">
           This week specials!
         </Heading>
-        <Button borderRadius="10px" bg="#EAC630" minW={110}>
-          Online Menu
+        <Button 
+          borderRadius="20px" 
+          bg="#cf2e2e" 
+          fontFamily="Montserrat Bold"
+          color="white"
+          minW={110}
+          minH={45}
+          onClick={() => navigate('/menu')}
+          _hover={{ bg: "darkred" }}
+        >
+          Order Online
         </Button>
       </HStack>
       <Box>

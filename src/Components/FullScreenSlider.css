@@ -1,0 +1,274 @@
+/* FullScreenSlider.css */
+
+.fullscreen-slider {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.slider-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.slide-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.slide-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8%;
+}
+
+.slide-content {
+  max-width: 600px;
+  color: white;
+  z-index: 2;
+  text-align: center;
+}
+
+.slide-title {
+  font-size: 4rem;
+  font-weight: 300;
+  margin-bottom: 0.5rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: 'Times New Roman', serif;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideInUp 1s ease-out 0.3s forwards;
+}
+
+.slide-subtitle {
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+  color: #f4f4f4;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideInUp 1s ease-out 0.6s forwards;
+}
+
+.slide-description {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+  color: #e0e0e0;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideInUp 1s ease-out 0.9s forwards;
+}
+
+.slide-buttons {
+  display: flex;
+  gap: 1.5rem;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideInUp 1s ease-out 1.2s forwards;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 15px 35px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 0;
+}
+
+.btn-primary {
+  background-color: #c8102e;
+  color: white;
+  border: 2px solid #c8102e;
+}
+
+.btn-primary:hover {
+  background-color: transparent;
+  color: #c8102e;
+  border-color: #c8102e;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.btn-secondary:hover {
+  background-color: white;
+  color: #333;
+}
+
+/* Indicadores de puntos */
+.slider-dots {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+  z-index: 3;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid white;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background-color: white;
+}
+
+.dot:hover {
+  transform: scale(1.2);
+}
+
+/* Elementos decorativos */
+.decorative-elements {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.diamond {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 2rem;
+  animation: float 6s ease-in-out infinite;
+}
+
+.diamond-1 {
+  top: 20%;
+  right: 50px;
+  animation-delay: 0s;
+}
+
+.diamond-2 {
+  top: 50%;
+  right: 80px;
+  animation-delay: 2s;
+}
+
+.diamond-3 {
+  top: 80%;
+  right: 60px;
+  animation-delay: 4s;
+}
+
+/* Animaciones */
+@keyframes slideInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .slide-overlay {
+    padding: 0 5%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .slide-title {
+    font-size: 2.5rem;
+  }
+
+  .slide-subtitle {
+    font-size: 1.4rem;
+  }
+
+  .slide-description {
+    font-size: 1rem;
+  }
+
+  .slide-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 200px;
+    padding: 12px 30px;
+  }
+
+  .decorative-elements {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .slide-title {
+    font-size: 2rem;
+  }
+
+  .slide-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .slide-description {
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+  }
+
+  .slider-dots {
+    bottom: 20px;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+  }
+}

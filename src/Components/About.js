@@ -1,25 +1,60 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "../Styles/About.css";
-import chef1 from "../images/About/Mario and Adrian b.jpg";
-import chef2 from "../images/About/restaurant chef B.jpg";
+import kitchenImg from "../images/About/kitchen.jpg";
+import barImg from "../images/About/bar.jpg";
+import dishImg from "../images/About/diche.jpg";
+import restaurantImg from "../images/About/restaurant.jpg";
 
 const About = () => {
+  const navigate = useNavigate();
+
+  const handleStoryClick = () => {
+    navigate('/story');
+  };
+
   return (
-    <div className="about-container">
-      <div className="about-description">
-        <h2>Little Lemon</h2>
-        <h5>Chicago</h5>
-        <p>
-          Little Lemon is a family-owned Mediterranean restaurant, focused on
-          traditional recipes served with a modern twist. The chefs draw
-          inspiration from Italian, Greek, and Turkish culture. The restaurant
-          has a rustic and relaxed atmosphere with moderate prices, making it a
-          popular place for a meal any time of the day
+    <div id="about" className="about-container">
+      <div className="about-text-column">
+        <h1 className="about-title">Little Lemon – Chicago</h1>
+        <h2 className="about-subtitle">Family-owned Mediterranean restaurant</h2>
+        <p className="about-description">
+          We are a family-owned Mediterranean restaurant, focused on traditional recipes 
+          served with a modern twist. Our chefs draw inspiration from Italian, Greek, 
+          and Turkish culture, creating an authentic dining experience in the heart of Chicago.
         </p>
+        <button className="about-cta-button" onClick={handleStoryClick}>Our Story</button>
       </div>
-      <div className="about-images">
-        <img src={chef1} alt="chef1" className="chef1" />
-        <img src={chef2} alt="chef2" className="chef2" />
+      
+      <div className="about-images-column">
+        <div className="image-mosaic">
+          <div className="image-large">
+            <img src={kitchenImg} alt="Kitchen in action" />
+            <div className="image-overlay">
+              <span>Kitchen Excellence</span>
+            </div>
+          </div>
+          <div className="image-small-group">
+            <div className="image-small">
+              <img src={barImg} alt="Modern bar" />
+              <div className="image-overlay">
+                <span>Craft Bar</span>
+              </div>
+            </div>
+            <div className="image-small">
+              <img src={dishImg} alt="Elegant dish" />
+              <div className="image-overlay">
+                <span>Signature Dishes</span>
+              </div>
+            </div>
+            <div className="image-small">
+              <img src={restaurantImg} alt="Restaurant interior" />
+              <div className="image-overlay">
+                <span>Elegant Ambiance</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

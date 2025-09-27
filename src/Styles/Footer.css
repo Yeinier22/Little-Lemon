@@ -1,49 +1,78 @@
+.footer-top-border {
+    height: 4px;
+    background: linear-gradient(90deg, #F4CE14 0%, #495E57 50%, #F4CE14 100%);
+}
+
 footer {
-    display: flex;
-    background-color: rgb(38, 38, 38);;
+    background: linear-gradient(135deg, #2C2C2C 0%, #1A1A1A 100%);
     color: #fff;
-    margin: 0 auto;
-    text-align: center;
-    padding: 20px 20px 20px;
-    justify-content: center;
+    margin-top: 80px;
+    position: relative;
 }
 
 
 .footer-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 1.5rem;
+    grid-gap: 2rem;
     justify-content: center;
-    max-width: 80%;
-    margin:50px 100px;
-    padding: 25px; 
-    /*line-height: 0.8;*/
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 40px 40px;
     text-align: center;
-    border: white 5px solid;
+    align-items: flex-start;
 }
 
 .footer-container h3{
-    color: #aad03a;
-    font-size: 18px;
-    line-height: 20px;
-    letter-spacing: -0.5px;
+    color: #F4CE14;
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    position: relative;
+    padding-bottom: 12px;
+    font-family: 'Arial', sans-serif;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.footer-container h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #F4CE14 0%, #FFD700 100%);
+    border-radius: 2px;
+    box-shadow: 0 2px 4px rgba(244, 206, 20, 0.3);
 }
 
 
 .logo-container {
-    display:flex;
-    height: 300px;
-    width: 90px;
-    justify-content: center;
-    align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
 }
 
-.footer-logo {
-    transform: rotate(270deg);
-    height: 70px;
-    position: absolute;
+.logo-container .typographic-logo {
+    margin-bottom: 15px;
+}
+
+.logo-container .typographic-logo .logo-line {
+    color: #F4CE14;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.logo-tagline {
+    font-size: 0.9rem;
+    color: #cccccc;
+    font-style: italic;
+    margin: 0;
+    line-height: 1.4;
+    max-width: 200px;
 }
 
 
@@ -65,9 +94,125 @@ footer {
 }
 
 
+/* Estilos para iconos de contacto */
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 12px;
+}
+
+.contact-icon {
+    color: #F4CE14;
+    font-size: 1.1rem;
+    width: 20px;
+    flex-shrink: 0;
+}
+
+.contact-item a {
+    color: #cccccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
+    color: #F4CE14;
+}
+
+/* Estilos para redes sociales */
+.social-links {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background: rgba(244, 206, 20, 0.1);
+    border: 2px solid #F4CE14;
+    border-radius: 50%;
+    color: #F4CE14;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background: #F4CE14;
+    color: #2C2C2C;
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 5px 15px rgba(244, 206, 20, 0.4);
+}
+
+.social-link.instagram:hover {
+    background: linear-gradient(45deg, #E4405F, #F77737, #F99A1C);
+    border-color: #E4405F;
+    color: white;
+}
+
+.social-link.facebook:hover {
+    background: #1877F2;
+    border-color: #1877F2;
+    color: white;
+}
+
+.social-link.tiktok:hover {
+    background: #000000;
+    border-color: #FF0050;
+    color: #FF0050;
+}
+
+.social-link.twitter:hover {
+    background: #1DA1F2;
+    border-color: #1DA1F2;
+    color: white;
+}
+
+/* Estilos para el footer bottom y back to top */
+.footer-bottom {
+    background: rgba(0, 0, 0, 0.3);
+    border-top: 1px solid rgba(244, 206, 20, 0.2);
+    padding: 20px 40px;
+    text-align: center;
+}
+
+.footer-copyright p {
+    margin: 0;
+    color: #999999;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #F4CE14 0%, #E6B800 100%);
+    color: #2C2C2C;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(244, 206, 20, 0.4);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.back-to-top:hover {
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 6px 20px rgba(244, 206, 20, 0.6);
+    background: linear-gradient(135deg, #495E57 0%, #3A4A45 100%);
+    color: #F4CE14;
+}
+
 footer a:hover {
-    color: #fff;
-    border-bottom: 2px solid #aad03a;
+    color: #F4CE14;
     outline: 0;
     cursor: pointer;
 }

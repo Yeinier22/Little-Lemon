@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 *{
     padding: 0;
     margin: 0;
@@ -7,38 +9,112 @@
 }
 
 .header-container {
-    display: inline-flex;
-    align-items: center;
+    display: flex;
+    align-items: flex-start;
     justify-content: space-between;
     position: fixed;
     z-index: 99999;
     margin-top: 0;
-    padding-top: 0;
-    background: white;
+    padding: 20px 0;
+    background: transparent; /* Completamente transparente por defecto */
     width: 100%;
-    top:0;
+    top: 0;
+    transition: all 0.3s ease;
 }
 
-.logo {
-    height: 70px;
+.header-container.scrolled {
+    background: #562a23; /* Color café elegante */
+    backdrop-filter: blur(15px);
+}
+
+/* Estilos para el logo tipográfico están en TypographicLogo.css */
+.typographic-logo {
+    margin-left: 40px; /* Más a la derecha */
     margin-right: 30px;
-    margin-top: 10px;
-    margin-left: 20px;
-    margin-bottom: 10px;
+    padding: 15px 0 20px 0; /* Más padding para bajarlo */
+    transform: scale(1.4); /* Más grande - 40% */
+}
+
+.header-container .nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+    margin-right: 40px;
+}
+
+.header-container .nav ul {
+  display: flex;            
+  flex-direction: row;      
+  gap: 30px;              
+  list-style: none;           
+  margin: 0;
+  padding: 0;
 }
 
 .header-container .nav li {
-    display: inline-flex;
+    display: block;
     align-items: center;
     justify-content: center;
-    font: 16px;
-    margin: 15px;
     position: relative;
-    font-family: Arial, sans-serif;
+    margin: 0;
 }
 
 .header-container .nav a {
-    font-weight: bold;
+    font-family: 'Big Noodle Titling','Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    transition: all 0.3s ease;
+    padding: 5px 0;
+    position: relative;
+}
+
+.header-container .nav a:hover {
+    color: #f4f4f4;
+    transform: translateY(-2px);
+}
+
+.header-container .nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: white;
+    transition: width 0.3s ease;
+}
+
+.header-container .nav a:hover::after {
+    width: 100%;
+}
+
+/* Botón ORDER NOW */
+.order-now-btn {
+    background: #c8102e;
+    color: white;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: 0;
+    margin-top: 10px;
+}
+
+.order-now-btn:hover {
+    background: #a50d26;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(200, 16, 46, 0.3);
 }
 
 /*Icons*/
@@ -85,47 +161,64 @@
 
     .header-container  nav {
         display: flex;
+        flex-direction: column;
         position: fixed;
         justify-content: center;
-        top: 80px;  /*Logo height + Logo margin-top*/
+        align-items: center;
+        top: 80px;
         left: 0;
         width: 100%;
-        height: 100%;
-        background-color: white;
-        z-index: 1000; /* Asegura que la ventana emergente esté en la parte superior */
         height: 400px;
+        background-color: rgba(86, 42, 35, 0.95);
+        backdrop-filter: blur(15px);
+        z-index: 1000;
         transform: translateX(-150%);
-        transition: all .45s;  
+        transition: all .45s;
+        gap: 20px;
+        padding: 20px;
+        margin-right: 0;
     }
 
     .header-container .nav li {
         display: flex;
         align-items: center;
         justify-content: center;
-        font: 16px;
-        margin: 15px;
         position: relative;
-        font-family: Arial, sans-serif;
-        margin-top: 30px;
-        font-size: 20px;
+        margin: 0;
+    }
+
+    .header-container .nav a {
+        font-size: 1.6rem;
+        margin: 10px 0;
+    }
+
+    .order-now-btn {
+        margin-left: 0;
+        margin-top: 20px;
+        padding: 15px 30px;
+        font-size: 1.4rem;
     }
 
     .header-container  .nav-open{
         display: flex;
+        flex-direction: column;
         position: fixed;
         justify-content: center;
-        top: 80px;  /*Logo height + Logo margin-top*/
+        align-items: center;
+        top: 80px;
         left: 0;
         width: 100%;
-        height: 100%;
-        background-color: white;
-        z-index: 1000; /* Asegura que la ventana emergente esté en la parte superior */
-        opacity: 1; /* Hace que la ventana emergente sea visible */
-        transition: opacity 1s ease-in-out; /* Agrega una transición suave */
         height: 400px;
+        background-color: rgba(86, 42, 35, 0.95);
+        backdrop-filter: blur(15px);
+        z-index: 1000;
+        opacity: 1;
         transform: translateY(0%);
         transition: all .45s;
         font-weight: bold;
+        gap: 20px;
+        padding: 20px;
+        margin-right: 0;
     }
 
     .header-container  .icon-mark {
@@ -137,6 +230,7 @@
         cursor: pointer;
         margin-right: 15px;
         margin-top: 10px;
+        color: white;
     }
 
 
@@ -149,6 +243,7 @@
         cursor: pointer;
         margin-right: 10px;
         margin-top: 10px;
+        color: white;
     }
 
 
@@ -169,10 +264,11 @@
     }
 
 
-   .logo {
-        height: auto;
-        max-height: 60px;
+   .typographic-logo {
         margin-right: 0;
+        margin-left: 20px;
+        transform: scale(1.1); /* Un poco más grande en móvil */
+        padding: 10px 0;
    }
 
 

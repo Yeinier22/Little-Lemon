@@ -1,0 +1,332 @@
+/* Our Story - Zig-zag Layout */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+.our-story-container {
+  background-color: #f8f9fa;
+  padding-top: 40px; /* Reducido para menor espacio */
+  min-height: 100vh;
+}
+
+/* Back Button */
+.back-button {
+  position: absolute;
+  top: 120px;
+  left: 40px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 2px solid #c8102e;
+  color: #c8102e;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.back-button:hover {
+  background: #c8102e;
+  color: white;
+  transform: translateX(-5px);
+}
+
+.back-button::before {
+  content: '←';
+  font-size: 1.2rem;
+}
+
+/* Header Section */
+.story-header {
+  text-align: center;
+  padding: 40px 20px 40px; /* Reducido padding superior e inferior */
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.story-main-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 4rem;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  letter-spacing: 3px;
+}
+
+.story-intro {
+  font-size: 1.3rem;
+  color: #7f8c8d;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+/* Story Sections */
+.story-section {
+  padding: 60px 0;
+}
+
+.story-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  align-items: center;
+}
+
+/* Reverse layout for zig-zag effect */
+.story-section.reverse .story-content {
+  direction: rtl;
+}
+
+.story-section.reverse .story-text,
+.story-section.reverse .story-image {
+  direction: ltr;
+}
+
+/* Text Content */
+.story-text {
+  padding: 40px;
+}
+
+.story-section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.8rem;
+  color: #c8102e;
+  margin-bottom: 25px;
+  letter-spacing: 2px;
+}
+
+.story-description {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #34495e;
+  text-align: justify;
+}
+
+/* Image Content */
+.story-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  aspect-ratio: 4/3;
+}
+
+.story-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.story-image:hover img {
+  transform: scale(1.05);
+}
+
+/* Image Overlay */
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(200, 16, 46, 0.7), rgba(44, 62, 80, 0.5));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.story-image:hover .image-overlay {
+  opacity: 1;
+}
+
+.image-overlay span {
+  color: white;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* Invitation Section */
+.story-invitation {
+  background: linear-gradient(135deg, #2c3e50, #34495e);
+  color: white;
+  padding: 80px 40px;
+  text-align: center;
+  margin-top: 60px;
+}
+
+.invitation-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.invitation-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3rem;
+  margin-bottom: 25px;
+  letter-spacing: 2px;
+  color: #ecf0f1;
+}
+
+.invitation-text {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  margin-bottom: 40px;
+  color: #bdc3c7;
+}
+
+.invitation-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.btn-primary,
+.btn-secondary {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  padding: 15px 35px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  min-width: 180px;
+}
+
+.btn-primary {
+  background: #c8102e;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #a50d26;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(200, 16, 46, 0.4);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.btn-secondary:hover {
+  background: white;
+  color: #2c3e50;
+  transform: translateY(-3px);
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+  .back-button {
+    top: 90px;
+    left: 20px;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+
+  .story-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .story-section.reverse .story-content {
+    direction: ltr;
+  }
+
+  .story-text {
+    padding: 20px;
+  }
+
+  .story-main-title {
+    font-size: 3rem;
+  }
+
+  .story-section-title {
+    font-size: 2.4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .back-button {
+    top: 70px;
+    left: 15px;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+
+  .story-header {
+    padding: 60px 15px 40px;
+  }
+
+  .story-main-title {
+    font-size: 2.5rem;
+  }
+
+  .story-intro {
+    font-size: 1.1rem;
+  }
+
+  .story-section {
+    padding: 40px 0;
+  }
+
+  .story-content {
+    padding: 0 20px;
+  }
+
+  .story-section-title {
+    font-size: 2rem;
+  }
+
+  .story-description {
+    font-size: 1.1rem;
+  }
+
+  .invitation-title {
+    font-size: 2.5rem;
+  }
+
+  .invitation-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .story-main-title {
+    font-size: 2rem;
+  }
+
+  .story-section-title {
+    font-size: 1.8rem;
+  }
+
+  .story-description {
+    font-size: 1rem;
+  }
+
+  .story-content {
+    gap: 30px;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    min-width: 150px;
+    padding: 12px 25px;
+  }
+}

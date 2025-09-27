@@ -1,5 +1,4 @@
-import Specials from "./Highlight";
-import Hero from "./Hero";
+import FullScreenSlider from "./FullScreenSlider";
 import Testimonial from "./Review";
 import { ChakraProvider } from "@chakra-ui/react";
 import About from "./About";
@@ -7,12 +6,11 @@ import About from "./About";
 const Main = () => {
   return (
     <main>
-      <Hero />
+      <FullScreenSlider />
+      <About />
       <ChakraProvider>
-        <Specials />
         <Testimonial />
       </ChakraProvider>
-      <About />
     </main>
   );
 };
