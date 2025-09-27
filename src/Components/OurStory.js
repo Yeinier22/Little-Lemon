@@ -42,9 +42,7 @@ const OurStory = () => {
           <div className="story-text">
             <h2 className="story-section-title">Our Beginning</h2>
             <p className="story-description">
-              Little Lemon was born in Chicago with a simple mission: to bring the essence of 
-              Mediterranean cuisine to every table. Inspired by family traditions and a love for 
-              honest food, we set out to create a restaurant that feels both welcoming and unforgettable.
+              Little Lemon was born in Miami with a simple mission: to share the heart of Peruvian cuisine with the world. Inspired by Peru's rich culinary heritage and family traditions, we set out to create a restaurant that feels both authentic and unforgettable.
             </p>
           </div>
           <div className="story-image">
@@ -68,9 +66,7 @@ const OurStory = () => {
           <div className="story-text">
             <h2 className="story-section-title">Our Philosophy</h2>
             <p className="story-description">
-              We believe in food that tells a story. Our chefs draw inspiration from Italian, Greek, 
-              and Turkish roots, blending traditional recipes with a modern twist. Fresh ingredients, 
-              vibrant flavors, and a passion for excellence define every dish that leaves our kitchen.
+              We believe in food that celebrates culture. Our chefs draw inspiration from the diverse regions of Peru — from the coast to the Andes and the Amazon — blending classic recipes with a touch of modern creativity. Fresh ingredients, bold flavors, and a deep respect for tradition define every dish we serve.
             </p>
           </div>
         </div>
@@ -82,10 +78,7 @@ const OurStory = () => {
           <div className="story-text">
             <h2 className="story-section-title">The Experience</h2>
             <p className="story-description">
-              At Little Lemon, dining is more than a meal — it's a moment to share. Whether you're 
-              enjoying a handcrafted cocktail at our bar, savoring a signature dish with friends, 
-              or celebrating a special occasion, our restaurant offers an atmosphere that is warm, 
-              rustic, and filled with character.
+              At Little Lemon, dining is more than a meal — it's a journey through Peru. Whether you're enjoying a refreshing pisco sour at our bar, savoring a ceviche prepared with the freshest seafood, or gathering with loved ones over a plate of lomo saltado, our restaurant offers an atmosphere that is warm, vibrant, and full of character.
             </p>
           </div>
           <div className="story-image">

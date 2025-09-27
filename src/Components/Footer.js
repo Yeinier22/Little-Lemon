@@ -40,8 +40,20 @@ const Footer = () => {
       
       <div className="footer-container">
         <div className="logo-container">
-          <TypographicLogo />
-          <p className="logo-tagline">Authentic Peruvian Culinary Experience</p>
+          <div 
+            className="logo-home-button"
+            onClick={() => window.location.href = '/'}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                window.location.href = '/';
+              }
+            }}
+          >
+            <TypographicLogo />
+            <p className="logo-tagline">Authentic Peruvian Culinary Experience</p>
+          </div>
         </div>
         
         <div className="footer-navigation">

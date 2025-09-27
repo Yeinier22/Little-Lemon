@@ -66,9 +66,9 @@ const FullScreenSlider = () => {
             <div className="slide-overlay">
               <div className="slide-content">
                 <h1 className="slide-title">Little Lemon</h1>
-                <h2 className="slide-subtitle">Mediterranean Restaurant</h2>
+                <h2 className="slide-subtitle">Peruvian Restaurant</h2>
                 <p className="slide-description">
-                  Experience authentic Mediterranean flavors with a modern twist
+                  Experience authentic Peruvian flavors with a modern twist
                 </p>
                 <div className="slide-buttons">
                   <button 

@@ -1,76 +1,93 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Menu.css';
-
-// Importar las imágenes del menú
-import dishesImg from '../images/menu/dishes.jpg';
-import dessertImg from '../images/menu/dessert.jpg';
-import drinksImg from '../images/menu/drinks.jpg';
+import menuHeroImg from '../images/Menu.jpg';
+import menuData from '../data/menuData.json';
 
 const Menu = () => {
   const navigate = useNavigate();
+  const [activeCategory, setActiveCategory] = useState('mainMenu');
 
-  const menuCategories = [
-    {
-      id: 1,
-      title: 'Main Dishes',
-      image: dishesImg,
-      alt: 'Main Dishes'
-    },
-    {
-      id: 2,
-      title: 'Desserts',
-      image: dessertImg,
-      alt: 'Delicious Desserts'
-    },
-    {
-      id: 3,
-      title: 'Drinks & Cocktails',
-      image: drinksImg,
-      alt: 'Drinks and Cocktails'
-    }
-  ];
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
-  const handleCategoryClick = (category) => {
-    // Por ahora no hace nada, pero aquí se puede agregar la funcionalidad después
-    console.log(`Clicked on: ${category.title}`);
-  };
-
-  return (
-    <div className="menu-container">
-      <header className="menu-header">
-        <button 
-          className="back-button"
-          onClick={() => navigate('/')}
-        >
-          ← Back to Home
-        </button>
-        <h1>Our Menu</h1>
-        <p>Discover our delicious options</p>
-      </header>
-      
-      <div className="menu-grid">
-        {menuCategories.map((category) => (
-          <div 
-            key={category.id} 
-            className="menu-item"
-            onClick={() => handleCategoryClick(category)}
-          >
-            <div className="menu-item-image">
-              <img 
-                src={category.image} 
-                alt={category.alt}
-              />
-              <div className="menu-item-overlay">
-                <div className="menu-item-lines">
-                  <div className="line-top"></div>
-                  <h3>{category.title}</h3>
-                  <div className="line-bottom"></div>
-                </div>
-              </div>
+  const renderMenuSection = (title, items) => (
+    <div className="menu-section">
+      <h3 className="menu-section-title">{title}</h3>
+      <div className="menu-items">
+        {items.map((item) => (
+          <div key={item.id} className="menu-item-card">
+            <div className="menu-item-header">
+              <h4 className="menu-item-name">{item.name}</h4>
+              <span className="menu-item-price">${item.price}</span>
             </div>
+            {item.description && (
+              <p className="menu-item-description">{item.description}</p>
+            )}
           </div>
         ))}
+      </div>
+    </div>
+  );
+
+  const renderMainMenu = () => (
+    <div className="menu-content">
+      {renderMenuSection('Entradas', menuData.mainMenu.entradas)}
+      {renderMenuSection('Platos Principales', menuData.mainMenu.platosPrincipales)}
+      {renderMenuSection('Postres', menuData.mainMenu.postres)}
+    </div>
+  );
+
+  const renderBebidas = () => (
+    <div className="menu-content">
+      {renderMenuSection('Cocktails', menuData.bebidas.cocktails)}
+      {renderMenuSection('Cervezas', menuData.bebidas.cervezas)}
+      {renderMenuSection('Otras Bebidas', menuData.bebidas.otrasBebidas)}
+    </div>
+  );
+
+  return (
+    <div className="menu-page">
+      {/* Hero Section */}
+      <div className="menu-hero">
+        <div className="menu-hero-image">
+          <img src={menuHeroImg} alt="Menu" />
+          <div className="menu-hero-overlay"></div>
+        </div>
+        <div className="menu-hero-content">
+          <button 
+            className="back-button"
+            onClick={() => navigate('/')}
+          >
+            ← Volver
+          </button>
+          <h1 className="menu-hero-title">MENÚ</h1>
+        </div>
+      </div>
+
+      {/* Navigation Tabs */}
+      <div className="menu-nav">
+        <div className="menu-nav-container">
+          <button 
+            className={`menu-nav-button ${activeCategory === 'mainMenu' ? 'active' : ''}`}
+            onClick={() => setActiveCategory('mainMenu')}
+          >
+            Main Menu
+          </button>
+          <button 
+            className={`menu-nav-button ${activeCategory === 'bebidas' ? 'active' : ''}`}
+            onClick={() => setActiveCategory('bebidas')}
+          >
+            Bebidas
+          </button>
+        </div>
+      </div>
+
+      {/* Menu Content */}
+      <div className="menu-container">
+        {activeCategory === 'mainMenu' ? renderMainMenu() : renderBebidas()}
       </div>
     </div>
   );

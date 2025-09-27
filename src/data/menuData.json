@@ -1,0 +1,240 @@
+{
+  "mainMenu": {
+    "entradas": [
+      {
+        "id": 1,
+        "name": "HOUSE SALAD",
+        "price": 7,
+        "description": "iceberg lettuce, cucumber, carrot, ginger dressing, crispy wonton"
+      },
+      {
+        "id": 2,
+        "name": "PAPA A LA HUANCAÍNA",
+        "price": 8,
+        "description": "served in a shareable portion"
+      },
+      {
+        "id": 3,
+        "name": "TAMALITO VERDE",
+        "price": 8,
+        "description": "with seco sauce and salsa criolla"
+      },
+      {
+        "id": 4,
+        "name": "CAUSA LIMEÑA",
+        "price": 13,
+        "description": "tuna or chicken salad, creamy potato infused with ají amarillo, fresh lime juice"
+      },
+      {
+        "id": 5,
+        "name": "CROQUETAS DE AJÍ DE GALLINA",
+        "price": 10,
+        "description": ""
+      },
+      {
+        "id": 6,
+        "name": "TARTAR",
+        "price": 15,
+        "description": "tuna or salmon, avocado, sweet chili, sesame oil, ponzu, wonton chips*"
+      },
+      {
+        "id": 7,
+        "name": "BANG BANG SHRIMP",
+        "price": 14,
+        "description": "crispy shrimp, ají amarillo, sweet chili, orange honey, ponzu"
+      },
+      {
+        "id": 8,
+        "name": "TIRADITO",
+        "price": 18,
+        "description": "fish of the day, charred serrano & cucumber sauce, charred avocado, cilantro, pickled ginger roots*"
+      },
+      {
+        "id": 9,
+        "name": "CEBICHE CRIOLLO",
+        "price": "11/18",
+        "description": "fish of the day, ají limo, fresh lime juice, ginger. Your choice of half or full size"
+      }
+    ],
+    "platosPrincipales": [
+      {
+        "id": 10,
+        "name": "LOMO SALTADO",
+        "price": 15,
+        "description": "lomo sauce, red onions, tomatoes, scallions, cilantro, rice, fries"
+      },
+      {
+        "id": 11,
+        "name": "ARROZ CHAUFA",
+        "price": 16,
+        "description": "Peruvian fried rice with hoisin, oyster sauce, soy sauce, egg, red bell pepper, red onions, scallions"
+      },
+      {
+        "id": 12,
+        "name": "ARROZ HÚMEDO",
+        "price": 16,
+        "description": "creamy rice with ají amarillo, ají panca, Parmesan cheese, red bell pepper, tomatoes"
+      },
+      {
+        "id": 13,
+        "name": "AJÍ DE GALLINA",
+        "price": 17,
+        "description": "Peruvian classic with shredded chicken, creamy ají amarillo sauce, Parmesan cheese, rice, walnuts"
+      },
+      {
+        "id": 14,
+        "name": "OSSOBUCO A LA CRIOLLA",
+        "price": 20,
+        "description": "with tallarines rojos and papa a la huancaína"
+      },
+      {
+        "id": 15,
+        "name": "CABRITO DE LECHE A LA NORTEÑA",
+        "price": 20,
+        "description": "with beans, yuca, rice, and salsa criolla"
+      },
+      {
+        "id": 16,
+        "name": "LA PANCETA CROCANTE",
+        "price": 20,
+        "description": "with golden potatoes, corn, salsa criolla, and house sauces"
+      },
+      {
+        "id": 17,
+        "name": "SECO LIMEÑO DE ASADO DE TIRA",
+        "price": 22,
+        "description": "with beans, rice, and yuca"
+      },
+      {
+        "id": 18,
+        "name": "PESCADO A LO MACHO",
+        "price": 24,
+        "description": "crispy corvina with seafood mix, shrimp, ají amarillo, ají panca, potatoes, red bell pepper, ají limo, rice"
+      }
+    ],
+    "postres": [
+      {
+        "id": 19,
+        "name": "CREMA VOLTEADA",
+        "price": 8,
+        "description": "slow-cooked to a creamy texture"
+      },
+      {
+        "id": 20,
+        "name": "PICARONES",
+        "price": 8,
+        "description": "with fig leaf–infused syrup and spices"
+      },
+      {
+        "id": 21,
+        "name": "PIONONO",
+        "price": 8,
+        "description": "filled with chirimoya and manjar de olla"
+      },
+      {
+        "id": 22,
+        "name": "PIE DE LIMÓN",
+        "price": 10,
+        "description": "with creamy filling, soft crust, and generous meringue"
+      },
+      {
+        "id": 23,
+        "name": "SUSPIRO A LA LIMEÑA",
+        "price": 10,
+        "description": "with rich manjar topped with just the right amount of meringue"
+      },
+      {
+        "id": 24,
+        "name": "TORTA DE CHOCOLATE",
+        "price": 12,
+        "description": "moist cake with plenty of manjar and chocolate fudge"
+      },
+      {
+        "id": 25,
+        "name": "TRES LECHES",
+        "price": 12,
+        "description": "rich and soaked, finished with vanilla bean cream"
+      }
+    ]
+  },
+  "bebidas": {
+    "cocktails": [
+      {
+        "id": 26,
+        "name": "PISCO SOUR",
+        "price": 12,
+        "description": "Quebranta pisco, lime, simple syrup, egg white, and Angostura bitters"
+      },
+      {
+        "id": 27,
+        "name": "ALGARROBINA",
+        "price": 12,
+        "description": "Quebranta pisco, evaporated milk, algarrobina, and cocoa cream"
+      },
+      {
+        "id": 28,
+        "name": "PIÑA COLADA",
+        "price": 12,
+        "description": "Rum, coconut cream, and pineapple"
+      },
+      {
+        "id": 29,
+        "name": "CAPITÁN",
+        "price": 12,
+        "description": "Quebranta pisco and vermouth rosso"
+      },
+      {
+        "id": 30,
+        "name": "MOSCOW MULE",
+        "price": 12,
+        "description": "Vodka, ginger beer, and lime juice"
+      },
+      {
+        "id": 31,
+        "name": "GIN TONIC",
+        "price": 13,
+        "description": "Gin, botanicals, and tonic water"
+      }
+    ],
+    "cervezas": [
+      {
+        "id": 32,
+        "name": "SAPPORO",
+        "price": 7,
+        "description": ""
+      },
+      {
+        "id": 33,
+        "name": "PILSEN",
+        "price": 7,
+        "description": ""
+      },
+      {
+        "id": 34,
+        "name": "CUSQUEÑA",
+        "price": 7,
+        "description": ""
+      }
+    ],
+    "otrasBebidas": [
+      {
+        "id": 35,
+        "name": "COCA COLA",
+        "price": 3,
+        "description": ""
+      },
+      {
+        "id": 36,
+        "name": "AGUA MINERAL",
+        "price": 4,
+        "description": "San Pellegrino / Acqua Panna"
+      },
+      {
+        "id": 37,
+        "name": "LIMONADA CLÁSICA",
+        "price": 4,
+        "description": ""
+      }
+    ]
+  }
+}

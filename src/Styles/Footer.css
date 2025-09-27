@@ -26,14 +26,14 @@ footer {
 .footer-container h3{
     color: #F4CE14;
     font-size: 1.4rem;
-    font-weight: 800;
+    font-weight: 900;
     letter-spacing: 2px;
     text-transform: uppercase;
     margin-bottom: 30px;
     position: relative;
     padding-bottom: 12px;
     font-family: 'Arial', sans-serif;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .footer-container h3::after {
@@ -57,13 +57,43 @@ footer {
     text-align: left;
 }
 
+.logo-home-button {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 10px;
+    border-radius: 8px;
+    outline: none;
+}
+
+.logo-home-button:hover {
+    transform: scale(1.05);
+    background: rgba(244, 206, 20, 0.1);
+    box-shadow: 0 4px 15px rgba(244, 206, 20, 0.2);
+}
+
+.logo-home-button:focus {
+    background: rgba(244, 206, 20, 0.15);
+    box-shadow: 0 0 0 2px #F4CE14;
+}
+
 .logo-container .typographic-logo {
     margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.logo-home-button:hover .typographic-logo {
+    transform: translateY(-2px);
 }
 
 .logo-container .typographic-logo .logo-line {
     color: #F4CE14;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    transition: color 0.3s ease;
+}
+
+.logo-home-button:hover .typographic-logo .logo-line {
+    color: #FFD700;
+    text-shadow: 2px 2px 6px rgba(244, 206, 20, 0.4);
 }
 
 .logo-tagline {
@@ -73,6 +103,11 @@ footer {
     margin: 0;
     line-height: 1.4;
     max-width: 200px;
+    transition: color 0.3s ease;
+}
+
+.logo-home-button:hover .logo-tagline {
+    color: #F4CE14;
 }
 
 

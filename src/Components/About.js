@@ -16,12 +16,12 @@ const About = () => {
   return (
     <div id="about" className="about-container">
       <div className="about-text-column">
-        <h1 className="about-title">Little Lemon – Chicago</h1>
-        <h2 className="about-subtitle">Family-owned Mediterranean restaurant</h2>
+        <h1 className="about-title">Little Lemon – Miami</h1>
+        <h2 className="about-subtitle">Family-owned Peruvian restaurant</h2>
         <p className="about-description">
-          We are a family-owned Mediterranean restaurant, focused on traditional recipes 
-          served with a modern twist. Our chefs draw inspiration from Italian, Greek, 
-          and Turkish culture, creating an authentic dining experience in the heart of Chicago.
+          We are a family-owned Peruvian restaurant, focused on traditional recipes 
+          served with a modern twist. Our chefs draw inspiration from Peru's diverse regions — 
+          from the coast to the Andes and the Amazon — creating an authentic dining experience in the heart of Miami.
         </p>
         <button className="about-cta-button" onClick={handleStoryClick}>Our Story</button>
       </div>

@@ -88,10 +88,13 @@
 
 .slide-buttons {
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 1.5rem;
   opacity: 0;
   transform: translateY(30px);
   animation: slideInUp 1s ease-out 1.2s forwards;
+  flex-wrap: wrap;
 }
 
 .btn-primary,
@@ -234,14 +237,17 @@
 
   .slide-buttons {
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     gap: 1rem;
+    width: 100%;
   }
 
   .btn-primary,
   .btn-secondary {
-    width: 200px;
-    padding: 12px 30px;
+    width: 220px;
+    padding: 14px 30px;
+    text-align: center;
   }
 
   .decorative-elements {

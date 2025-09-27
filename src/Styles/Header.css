@@ -27,12 +27,41 @@
     backdrop-filter: blur(15px);
 }
 
-/* Estilos para el logo tipográfico están en TypographicLogo.css */
+/* Estilos para el logo tipográfico clickeable */
+.header-logo-button {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 10px;
+    border-radius: 8px;
+    outline: none;
+    margin-left: 30px;
+}
+
+.header-logo-button:hover {
+    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 15px rgba(244, 206, 20, 0.2);
+}
+
+.header-logo-button:focus {
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 0 2px #F4CE14;
+}
+
 .typographic-logo {
-    margin-left: 40px; /* Más a la derecha */
     margin-right: 30px;
-    padding: 15px 0 20px 0; /* Más padding para bajarlo */
-    transform: scale(1.4); /* Más grande - 40% */
+    padding: 15px 0 20px 0;
+    transform: scale(1.4);
+    transition: all 0.3s ease;
+}
+
+.header-logo-button:hover .typographic-logo {
+    transform: scale(1.45) translateY(-2px);
+}
+
+.header-logo-button:hover .typographic-logo .logo-line {
+    color: #FFD700;
+    text-shadow: 2px 2px 8px rgba(244, 206, 20, 0.6);
 }
 
 .header-container .nav {
