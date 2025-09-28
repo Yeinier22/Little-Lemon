@@ -73,25 +73,29 @@ const Menu = () => {
   return (
     <>
       <Header />
-      <div className="menu-page">
-        {/* Hero Section */}
-        <div className="menu-hero">
-        <div className="menu-hero-image">
-          <img src={menuHeroImg} alt="Menu" />
-          <div className="menu-hero-overlay"></div>
-        </div>
-        <button 
-          className="back-button"
-          onClick={() => navigate('/')}
-        >
-          ← Back
-        </button>
-        <div className="menu-hero-content">
-          <h1 className="menu-hero-title">
-            MENU
-          </h1>
+      {/* Fullscreen Menu Hero */}
+      <div className="menu-fullscreen">
+        <div className="menu-slide">
+          <img src={menuHeroImg} alt="Menu" className="menu-slide-image" />
+          <div className="menu-slide-overlay">
+            <button 
+              className="menu-back-button"
+              onClick={() => navigate('/')}
+            >
+              ← Back
+            </button>
+            <div className="menu-slide-content">
+              <h1 className="menu-slide-title">MENU</h1>
+              <h2 className="menu-slide-subtitle">Peruvian Restaurant</h2>
+              <p className="menu-slide-description">
+                Discover our authentic Peruvian flavors with a modern twist
+              </p>
+            </div>
+          </div>
         </div>
       </div>
+
+      <div className="menu-page">
 
       {/* Navigation Tabs */}
       <div className="menu-nav">
