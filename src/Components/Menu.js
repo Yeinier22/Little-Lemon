@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import './Menu.css';
 import menuHeroImg from '../images/Menu.jpg';
 import menuData from '../data/menuData.json';
@@ -7,11 +9,29 @@ import menuData from '../data/menuData.json';
 const Menu = () => {
   const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState('mainMenu');
+  const [showBackToTop, setShowBackToTop] = useState(false);
 
   // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  // Back to top functionality
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowBackToTop(window.scrollY > 500);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
 
   const renderMenuSection = (title, items) => (
     <div className="menu-section">
@@ -91,6 +111,17 @@ const Menu = () => {
       <div className="menu-container">
         {activeCategory === 'mainMenu' ? renderMainMenu() : renderBebidas()}
       </div>
+
+      {/* Back to Top Button */}
+      {showBackToTop && (
+        <button 
+          className="back-to-top"
+          onClick={scrollToTop}
+          aria-label="Back to top"
+        >
+          <FontAwesomeIcon icon={faChevronUp} />
+        </button>
+      )}
     </div>
   );
 };
