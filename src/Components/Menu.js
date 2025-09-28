@@ -56,18 +56,14 @@ const Menu = () => {
           <img src={menuHeroImg} alt="Menu" />
           <div className="menu-hero-overlay"></div>
         </div>
+        <button 
+          className="back-button"
+          onClick={() => navigate('/')}
+        >
+          ← Back
+        </button>
         <div className="menu-hero-content">
-          <button 
-            className="back-button"
-            onClick={() => navigate('/')}
-          >
-            ← Back
-          </button>
-          <h1 
-            className="menu-hero-title"
-            onClick={() => navigate('/')}
-            style={{ cursor: 'pointer' }}
-          >
+          <h1 className="menu-hero-title">
             MENU
           </h1>
         </div>
