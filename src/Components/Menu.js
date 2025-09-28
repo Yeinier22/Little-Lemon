@@ -74,13 +74,13 @@ const Menu = () => {
             className={`menu-nav-button ${activeCategory === 'mainMenu' ? 'active' : ''}`}
             onClick={() => setActiveCategory('mainMenu')}
           >
-            Main Menu
+            <span className="nav-button-text">Main Menu</span>
           </button>
           <button 
             className={`menu-nav-button ${activeCategory === 'bebidas' ? 'active' : ''}`}
             onClick={() => setActiveCategory('bebidas')}
           >
-            Bebidas
+            <span className="nav-button-text">Bebidas</span>
           </button>
         </div>
       </div>

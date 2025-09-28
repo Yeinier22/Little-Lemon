@@ -36,7 +36,12 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: linear-gradient(
+    135deg, 
+    rgba(0, 0, 0, 0.6) 0%, 
+    rgba(73, 94, 87, 0.4) 50%, 
+    rgba(0, 0, 0, 0.7) 100%
+  );
   z-index: 2;
 }
 
@@ -116,9 +121,35 @@
 }
 
 .menu-nav-button.active {
-  color: #f4ce14;
+  color: #495e57;
   border-bottom-color: #f4ce14;
-  background: #f8f9fa;
+  background: rgba(244, 206, 20, 0.1);
+  position: relative;
+}
+
+.menu-nav-button .nav-button-text::before {
+  margin-right: 0.5rem;
+  font-size: 0.9rem;
+  transition: opacity 0.3s ease;
+}
+
+.menu-nav-button.active .nav-button-text::before {
+  content: '�';
+  opacity: 1;
+}
+
+.menu-nav-button:not(.active) .nav-button-text::before {
+  content: '🍹';
+  opacity: 0;
+}
+
+.menu-nav-button:not(.active):hover .nav-button-text::before {
+  opacity: 1;
+}
+
+/* Fix for bebidas button to show correct icon when active */
+.menu-nav-button.active:last-child .nav-button-text::before {
+  content: '🍹';
 }
 
 /* Menu Container */
@@ -131,20 +162,47 @@
 .menu-content {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 4rem;
+  position: relative;
+}
+
+.menu-content::before {
+  content: '';
+  position: absolute;
+  top: -2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #f4ce14, transparent);
 }
 
 /* Menu Sections */
 .menu-section {
   background: white;
   border-radius: 15px;
-  padding: 2.5rem;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease;
+  padding: 3rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  position: relative;
+  border: 1px solid rgba(244, 206, 20, 0.1);
 }
 
 .menu-section:hover {
-  transform: translateY(-5px);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+}
+
+.menu-section:not(:last-child)::after {
+  content: '···';
+  position: absolute;
+  bottom: -2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #f4ce14;
+  font-size: 1.5rem;
+  letter-spacing: 0.5rem;
+  opacity: 0.6;
 }
 
 .menu-section-title {
@@ -178,9 +236,10 @@
 
 /* Menu Item Cards */
 .menu-item-card {
-  padding: 1.5rem 0;
-  border-bottom: 1px solid #e9ecef;
+  padding: 2rem 0;
+  border-bottom: 1px dotted rgba(244, 206, 20, 0.3);
   transition: all 0.3s ease;
+  position: relative;
 }
 
 .menu-item-card:last-child {
@@ -188,45 +247,91 @@
 }
 
 .menu-item-card:hover {
-  background: #f8f9fa;
-  border-radius: 10px;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  background: rgba(244, 206, 20, 0.02);
+  border-radius: 12px;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  transform: translateX(5px);
+}
+
+.menu-item-card:hover::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 60%;
+  background: linear-gradient(180deg, #f4ce14, #495e57);
+  border-radius: 2px;
 }
 
 .menu-item-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 0.5rem;
-  gap: 1rem;
+  align-items: baseline;
+  margin-bottom: 0.75rem;
+  gap: 2rem;
+  position: relative;
+}
+
+.menu-item-header::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: repeating-linear-gradient(
+    to right,
+    transparent,
+    transparent 3px,
+    rgba(244, 206, 20, 0.4) 3px,
+    rgba(244, 206, 20, 0.4) 6px
+  );
+  margin: 0 1rem;
+  align-self: flex-end;
+  margin-bottom: 0.3rem;
 }
 
 .menu-item-name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #495e57;
+  margin: 0;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  flex: 0 0 auto;
+  font-family: 'Playfair Display', serif;
+}
+
+.menu-item-price {
   font-size: 1.3rem;
   font-weight: 600;
   color: #495e57;
   margin: 0;
-  letter-spacing: 0.5px;
-  flex: 1;
+  flex: 0 0 auto;
+  position: relative;
+  padding: 0.2rem 0;
 }
 
-.menu-item-price {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #f4ce14;
-  background: #495e57;
-  padding: 0.3rem 0.8rem;
-  border-radius: 20px;
-  min-width: fit-content;
+.menu-item-price::before {
+  content: '$';
+  font-size: 0.9em;
+  opacity: 0.7;
+  margin-right: 0.1rem;
 }
 
 .menu-item-description {
   font-size: 1rem;
-  color: #6c757d;
-  line-height: 1.6;
+  color: #8a8a8a;
+  line-height: 1.7;
   margin: 0;
   font-style: italic;
+  padding-left: 0;
+  transition: all 0.3s ease;
+}
+
+.menu-item-card:hover .menu-item-description {
+  color: #6c757d;
+  padding-left: 1rem;
 }
 
 /* Responsive Design */
@@ -268,15 +373,41 @@
   .menu-item-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.5rem;
+    gap: 0.75rem;
+  }
+
+  .menu-item-header::after {
+    display: none;
   }
 
   .menu-item-name {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    letter-spacing: 0.5px;
   }
 
   .menu-item-price {
-    align-self: flex-end;
+    align-self: flex-start;
+    font-size: 1.1rem;
+    color: #f4ce14;
+    font-weight: 700;
+  }
+
+  .menu-nav-button::before {
+    margin-right: 0.3rem;
+  }
+
+  .menu-section {
+    padding: 2rem;
+  }
+
+  .menu-item-card {
+    padding: 1.5rem 0;
+  }
+
+  .menu-item-card:hover {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    transform: none;
   }
 }
 
