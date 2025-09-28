@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import Header from './Header';
+import Footer from './Footer';
 import './Menu.css';
 import menuHeroImg from '../images/Menu.jpg';
 import menuData from '../data/menuData.json';
@@ -69,9 +71,11 @@ const Menu = () => {
   );
 
   return (
-    <div className="menu-page">
-      {/* Hero Section */}
-      <div className="menu-hero">
+    <>
+      <Header />
+      <div className="menu-page">
+        {/* Hero Section */}
+        <div className="menu-hero">
         <div className="menu-hero-image">
           <img src={menuHeroImg} alt="Menu" />
           <div className="menu-hero-overlay"></div>
@@ -122,7 +126,9 @@ const Menu = () => {
           <FontAwesomeIcon icon={faChevronUp} />
         </button>
       )}
-    </div>
+      </div>
+      <Footer />
+    </>
   );
 };
 
