@@ -21,7 +21,7 @@ const Menu = () => {
           <div key={item.id} className="menu-item-card">
             <div className="menu-item-header">
               <h4 className="menu-item-name">{item.name}</h4>
-              <span className="menu-item-price">${item.price}</span>
+              <span className="menu-item-price">{item.price}</span>
             </div>
             {item.description && (
               <p className="menu-item-description">{item.description}</p>
@@ -34,17 +34,17 @@ const Menu = () => {
 
   const renderMainMenu = () => (
     <div className="menu-content">
-      {renderMenuSection('Entradas', menuData.mainMenu.entradas)}
-      {renderMenuSection('Platos Principales', menuData.mainMenu.platosPrincipales)}
-      {renderMenuSection('Postres', menuData.mainMenu.postres)}
+      {renderMenuSection('Appetizers', menuData.mainMenu.entradas)}
+      {renderMenuSection('Main Courses', menuData.mainMenu.platosPrincipales)}
+      {renderMenuSection('Desserts', menuData.mainMenu.postres)}
     </div>
   );
 
   const renderBebidas = () => (
     <div className="menu-content">
       {renderMenuSection('Cocktails', menuData.bebidas.cocktails)}
-      {renderMenuSection('Cervezas', menuData.bebidas.cervezas)}
-      {renderMenuSection('Otras Bebidas', menuData.bebidas.otrasBebidas)}
+      {renderMenuSection('Beers', menuData.bebidas.cervezas)}
+      {renderMenuSection('Other Beverages', menuData.bebidas.otrasBebidas)}
     </div>
   );
 
@@ -61,9 +61,15 @@ const Menu = () => {
             className="back-button"
             onClick={() => navigate('/')}
           >
-            ← Volver
+            ← Back
           </button>
-          <h1 className="menu-hero-title">MENÚ</h1>
+          <h1 
+            className="menu-hero-title"
+            onClick={() => navigate('/')}
+            style={{ cursor: 'pointer' }}
+          >
+            MENU
+          </h1>
         </div>
       </div>
 
@@ -80,7 +86,7 @@ const Menu = () => {
             className={`menu-nav-button ${activeCategory === 'bebidas' ? 'active' : ''}`}
             onClick={() => setActiveCategory('bebidas')}
           >
-            <span className="nav-button-text">Bebidas</span>
+            <span className="nav-button-text">Beverages</span>
           </button>
         </div>
       </div>

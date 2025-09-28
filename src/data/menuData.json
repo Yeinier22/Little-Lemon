@@ -225,13 +225,13 @@
       },
       {
         "id": 36,
-        "name": "AGUA MINERAL",
+        "name": "MINERAL WATER",
         "price": 4,
         "description": "San Pellegrino / Acqua Panna"
       },
       {
         "id": 37,
-        "name": "LIMONADA CLÁSICA",
+        "name": "CLASSIC LEMONADE",
         "price": 4,
         "description": ""
       }

@@ -55,7 +55,7 @@
 
 .back-button {
   position: absolute;
-  top: -150px;
+  top: 2rem;
   left: 2rem;
   background: rgba(244, 206, 20, 0.9);
   color: #495e57;
@@ -67,6 +67,7 @@
   font-size: 1rem;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
+  z-index: 10;
 }
 
 .back-button:hover {
@@ -82,6 +83,13 @@
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
   letter-spacing: 3px;
   font-family: 'Playfair Display', serif;
+  transition: all 0.3s ease;
+}
+
+.menu-hero-title:hover {
+  transform: scale(1.05);
+  text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.8);
+  color: rgba(244, 206, 20, 0.9);
 }
 
 /* Navigation Tabs */
@@ -347,7 +355,7 @@
   }
 
   .back-button {
-    top: -120px;
+    top: 1rem;
     left: 1rem;
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
