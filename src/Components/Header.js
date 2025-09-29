@@ -2,13 +2,16 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import TypographicLogo from "./TypographicLogo";
 import "../Styles/Header.css";
-import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faXmark, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import { useOrder } from './Order/OrderContext';
 
 const Header = () => {
     const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+  const { totalItems } = useOrder() || { totalItems: 0 };
 
     const toggle = () => {
         setIsOpen(!isOpen)
@@ -61,7 +64,19 @@ const Header = () => {
           <li><a href="#catering">CATERING</a></li>
           <li><a href="#careers">CAREERS</a></li>
         </ul>
-         <button className="order-now-btn">ORDER NOW</button>
+         <button
+           className="order-now-btn"
+           data-has-items={totalItems > 0 ? 'true' : 'false'}
+           onClick={() => navigate(totalItems > 0 ? '/cart' : '/order')}
+           title={totalItems > 0 ? 'View Cart' : 'Order Now'}
+         >
+           {totalItems > 0 ? (
+             <>
+               <FontAwesomeIcon icon={faShoppingCart} style={{ marginRight: '6px' }} />
+               {totalItems}
+             </>
+           ) : 'ORDER NOW'}
+         </button>
       </nav> 
       </div>
 

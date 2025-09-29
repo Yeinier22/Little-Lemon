@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import Header from './Header';
 import Footer from './Footer';
+import FullScreenSlider from './FullScreenSlider';
 import './Menu.css';
 import menuHeroImg from '../images/Menu.jpg';
 import menuData from '../data/menuData.json';
@@ -70,30 +71,34 @@ const Menu = () => {
     </div>
   );
 
+  const menuHeroSlides = [
+    {
+      id: 'menu-hero',
+      src: menuHeroImg,
+      alt: 'Menu',
+      title: 'MENU',
+      subtitle: 'Peruvian Restaurant',
+      description: 'Discover our authentic Peruvian flavors with a modern twist'
+    }
+  ];
+
   return (
     <>
       <Header />
-      {/* Fullscreen Menu Hero */}
-      <div className="menu-fullscreen">
-        <div className="menu-slide">
-          <img src={menuHeroImg} alt="Menu" className="menu-slide-image" />
-          <div className="menu-slide-overlay">
-            <button 
-              className="menu-back-button"
-              onClick={() => navigate('/')}
-            >
-              ← Back
-            </button>
-            <div className="menu-slide-content">
-              <h1 className="menu-slide-title">MENU</h1>
-              <h2 className="menu-slide-subtitle">Peruvian Restaurant</h2>
-              <p className="menu-slide-description">
-                Discover our authentic Peruvian flavors with a modern twist
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <FullScreenSlider
+        slides={menuHeroSlides}
+        autoRotate={false}
+        showDots={false}
+        showDecorations={false}
+        className="menu-hero-slider"
+      >
+        <button 
+          className="menu-back-button"
+          onClick={() => navigate('/')}
+        >
+          ← Back
+        </button>
+      </FullScreenSlider>
 
       <div className="menu-page">
 

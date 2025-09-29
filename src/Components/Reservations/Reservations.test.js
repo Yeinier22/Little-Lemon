@@ -10,7 +10,8 @@ test('renders reservation title correctly',()=>{
         </Router>
     )
 
-    fireEvent.click(screen.getByText('Reserve a table'))
+    const reserveButtons = screen.getAllByRole('button', { name: /reserve a table/i });
+    fireEvent.click(reserveButtons[0]);
 
     const reservationButton=screen.getByText('Reservation at Little Lemon')
     expect(reservationButton).toBeInTheDocument();

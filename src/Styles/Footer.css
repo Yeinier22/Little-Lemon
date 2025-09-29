@@ -301,3 +301,35 @@ footer a:hover {
     
    
 }
+
+/* Quick Links navigation */
+.footer-navigation nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-navigation nav ul li {
+    margin: 8px 0;
+}
+
+.footer-navigation nav ul li a:link,
+.footer-navigation nav ul li a:visited {
+    color: #ffffff; /* keep white instead of browser default blue/purple */
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+}
+
+.footer-navigation nav ul li a:hover,
+.footer-navigation nav ul li a:focus {
+    color: #F4CE14;
+    transform: translateX(4px);
+    outline: none;
+}
+
+.footer-navigation nav ul li a:active {
+    color: #FFD700;
+}

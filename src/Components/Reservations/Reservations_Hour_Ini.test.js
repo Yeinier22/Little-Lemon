@@ -11,7 +11,8 @@ test('renders reservation title correctly',async ()=>{
         </Router>
     )
 
-    fireEvent.click(screen.getByText('Reserve a table'));
+    const reserveButtons = screen.getAllByRole('button', { name: /reserve a table/i });
+    fireEvent.click(reserveButtons[0]);
 
     const hoursSelector =screen.getByTestId('hours-selector');
      fireEvent.click(hoursSelector);

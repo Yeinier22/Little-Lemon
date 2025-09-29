@@ -138,6 +138,9 @@
     transition: all 0.3s ease;
     margin-left: 0;
     margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .order-now-btn:hover {
