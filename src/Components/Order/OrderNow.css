@@ -1,8 +1,15 @@
 .order-now-page {
   padding: 120px 40px 60px; /* account for fixed header */
-  background: #faf8f1;
+  background: linear-gradient(180deg,#f0eee7 0%, #faf8f1 60%);
   min-height: 100vh;
 }
+
+/* When near top (no scroll yet) apply a darker subtle backdrop to contrast white logo */
+:root:not(.order-bg-light) .order-now-page {
+  background: linear-gradient(180deg,#e9e4da 0%, #f7f4ec 55%, #faf8f1 100%);
+}
+
+:root.order-bg-light .order-now-page { transition: background .6s ease; }
 
 .order-title {
   font-size: 2.5rem;

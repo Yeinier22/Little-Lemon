@@ -90,6 +90,21 @@ const OrderNowPage = () => {
     return () => window.removeEventListener('keydown', handler);
   }, [selected]);
 
+  // Dynamic background: darker at top, lighter after scroll 120px
+  useEffect(() => {
+    const root = document.documentElement;
+    const handleScroll = () => {
+      if (window.scrollY > 120) {
+        root.classList.add('order-bg-light');
+      } else {
+        root.classList.remove('order-bg-light');
+      }
+    };
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <>
       <Header />
