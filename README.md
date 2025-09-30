@@ -15,12 +15,15 @@ This project originally simulated a full restaurant reservation and ordering exp
 - 🔄 Dynamic hour suggestions (±30/60 min alrededor del horario elegido)
 - 🎨 Custom CSS (glass / gradients) + responsive layout
 
-### Backend (Nuevo)
+### Backend (Nuevo / Real)
 - 📦 Mesas persistentes (`tables`)
 - 🧾 Reservas reales (`reservations`)
-- � Búsqueda de disponibilidad basada en SQL (LEFT JOIN + filtro por capacidad y slot libre)
-- 🕒 Sugerencias de horarios cercanos
-- ✅ Inserción transaccional de reserva con selección de la mesa más pequeña disponible
+- 🔍 Búsqueda de disponibilidad basada en SQL (filtro por capacidad + verificación de no solapamiento)
+- 🕒 Sugerencias de horarios cercanos (±30/60min)
+- ⛔ Prevención de solapamientos usando rangos con `duration_minutes`
+- ✅ Inserción transaccional eligiendo mesa de menor tamaño disponible (first-fit)
+- 🛡️ Validaciones robustas (nombre, email, date window ≤90 días, slots cada 30 min, location)
+- 👩‍💻 Página Admin para listar reservas por fecha y filtrar por ubicación
 
 ### Tecnología
 - React 18 / Create React App
@@ -102,12 +105,19 @@ curl -X POST http://localhost:5001/api/reservations \
 ### 8. Lógica de Selección de Mesa
 Se elige la mesa libre de menor capacidad que soporte el número de personas (first-fit ordenado por seats ASC).
 
-### 9. Próximas Extensiones (Sugeridas)
-- Bloques de duración (ej. 90 min) y chequeo de solapamiento
-- Cancelaciones
-- Panel admin para listado de reservas
-- Autenticación y límites de frecuencia
-- Docker Compose (MySQL + API + Web)
+### 9. Características Avanzadas Añadidas
+- Duración de reserva configurable (env: `RESERVATION_DURATION_MIN`, default 90)
+- Evita solapamientos (intervalo A solapa B si startA < endB AND endA > startB)
+- Admin route: `/admin/reservations` (activar/desactivar con `REACT_APP_SHOW_ADMIN=false`)
+- Endpoint listado admite `?location=inside|outside`
+- Validación backend responde 422 con `{ errors: [ {field,message} ] }`
+
+### 10. Próximas Extensiones (Ideas Futuras)
+- Cancelaciones / soft-delete
+- Autenticación (JWT) para admin
+- Export CSV / paginación
+- Rate limiting y logging estructurado
+- Tests integrados (supertest + jest)
 
 �📁 Project Structure
 ```
@@ -120,11 +130,57 @@ Se elige la mesa libre de menor capacidad que soporte el número de personas (fi
   ├── HomePage.js
   └── index.js
 ```
-🧪 Notes
+## 🧪 Validaciones Backend
+
+| Campo | Regla |
+|-------|-------|
+| name | 2–100 chars, letras/espacios/apóstrofos |- 
+| email | Regex simple RFC-lite |
+| people | 1–20 |
+| date | >= hoy y ≤ hoy+90 días |
+| time | HH:MM (minutos 00 o 30) |
+| location | inside / outside |
+| duration_minutes | 30–240 (opcional) |
+
+Respuestas inválidas: `422 { errors: [ { field, message } ] }`.
+
+## 🛠 Scripts de Desarrollo
+
+| Script | Descripción |
+|--------|-------------|
+| `npm run start` | Frontend CRA |
+| `npm run dev:full` | Front + API simultáneos |
+| `npm --prefix server run dev` | Sólo backend |
+
+## 🐳 Docker Compose
+
+Archivo: `docker-compose.yml`
+
+Servicios:
+```
+db (MySQL 8)
+api (Express)
+web (Frontend build sobre Nginx)
+```
+Levantar:
+```
+docker compose up --build
+```
+Accesos:
+```
+Frontend: http://localhost:3000
+API:      http://localhost:5001/api
+MySQL:    localhost:3307  (user: lemon / pass: lemonpass)
+```
+
+Variables personalizables en servicio api: `RESERVATION_DURATION_MIN`, DB_*.
+
+## 🧪 Notes
 
 - Si no levantas el backend, la UI mostrará error de disponibilidad al intentar buscar mesas.
 - La lógica simulada anterior fue marcada como deprecated (`Ocuppancy.js`, `Booking.js`).
-- El estado local todavía refleja la reserva recién creada para continuidad visual.
+- El estado local refleja la reserva recién creada para continuar el flujo sin refetch inmediato.
+- Para ocultar Admin: añadir en `.env` del frontend: `REACT_APP_SHOW_ADMIN=false`.
 
 📷 Screenshots
 
