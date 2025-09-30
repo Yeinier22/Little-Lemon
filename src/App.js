@@ -8,6 +8,7 @@ import OrderNowPage from './Components/Order/OrderNowPage';
 import { OrderProvider } from './Components/Order/OrderContext';
 import CartPage from './Components/Order/CartPage';
 import AdminReservations from './Components/AdminReservations';
+import MyReservations from './Components/Reservations/MyReservations';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         {process.env.REACT_APP_SHOW_ADMIN !== 'false' && (
           <Route path="/admin/reservations" element={<AdminReservations />} />
         )}
+        <Route path="/my-reservations" element={<MyReservations />} />
       </Routes>
     </OrderProvider>
   );

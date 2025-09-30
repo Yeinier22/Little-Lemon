@@ -7,6 +7,8 @@ import FormTimer from "./timer";
 import { useAlert } from "../Context/alertContext";
 // import { submitAPI } from "../Ocuppancy"; // deprecated simulated API
 import { createReservation } from "../../../api/reservations";
+import { addReservation } from '../../../storage/reservationStorage';
+import { tables } from '../../../storage/tables';
 import { useButton } from "../Context/SelectButtonContext";
 import { UserContext } from "../Reservations";
 
@@ -35,22 +37,31 @@ const FormSection = ({place, testing}) => {
     setIsOpen(true);
     timer.setTiempoRestante(0);
     timer.setFormularioCompletado(true);
+    const reservationPayload = {
+      name: formik.values.firstName + ' ' + formik.values.lastName,
+      email: formik.values.email,
+      people: people1,
+      date: pickDate,
+      time: selectHour,
+      location: place
+    };
     try {
-      // We need user entered data too (formik values) but current form only uses name/last/email/phone not persisted before.
-      // Combine into reservation creation call.
-      await createReservation({
-        name: formik.values.firstName + ' ' + formik.values.lastName,
-        email: formik.values.email,
-        people: people1,
-        date: pickDate,
-        time: selectHour,
-        location: place
-      });
-      // add to local occupation state to reflect new booking visually (optional)
+      await createReservation(reservationPayload);
       setOccupation(prev => [...prev, formData]);
-      console.log("Reservation stored in DB");
+      console.log("Reservation stored in backend DB");
     } catch(err){
-      console.error('Reservation error', err);
+      console.warn('Backend reservation failed, storing locally', err);
+      // pick a table id deterministically from available tables for local record (filter by seats & location if possible)
+      const matchingTables = tables.filter(t => t.seats >= people1 && (place === 'outside' ? t.location.toLowerCase() === 'terrace' : t.location.toLowerCase() !== 'terrace'));
+      const tableId = (matchingTables[0]?.id) || tables[0].id;
+      addReservation({
+        ...reservationPayload,
+        tableId,
+        date: pickDate.toISOString().slice(0,10),
+        time: selectHour
+      });
+      setOccupation(prev => [...prev, formData]);
+      console.log('Reservation stored in localStorage');
     }
   };
 
