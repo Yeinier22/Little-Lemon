@@ -1,0 +1,222 @@
+/* Contact Modal Styles */
+.contact-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.contact-modal-content {
+  background: white;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.contact-modal-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #666;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.contact-modal-close:hover {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.contact-modal-header {
+  padding: 25px 30px 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.contact-modal-header h2 {
+  margin: 0;
+  color: #333;
+  font-size: 24px;
+  font-weight: 600;
+  font-family: 'Markazi Text', serif;
+}
+
+.contact-modal-body {
+  padding: 25px 30px 30px;
+}
+
+.contact-info-section {
+  margin-bottom: 30px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.contact-item:last-child {
+  margin-bottom: 0;
+}
+
+.contact-icon {
+  font-size: 18px;
+  margin-right: 12px;
+  width: 24px;
+  text-align: center;
+}
+
+.contact-text {
+  color: #333;
+  flex: 1;
+}
+
+.contact-link {
+  background: none;
+  border: none;
+  color: #495E57;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: inherit;
+  font-family: inherit;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+
+.contact-link:hover {
+  color: #F4CE14;
+}
+
+.whatsapp-link:hover {
+  color: #25D366;
+}
+
+.opening-hours-section {
+  border-top: 1px solid #eee;
+  padding-top: 25px;
+}
+
+.opening-hours-section h3 {
+  margin: 0 0 20px 0;
+  color: #333;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: 'Markazi Text', serif;
+}
+
+.hours-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hours-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+}
+
+.days {
+  font-weight: 600;
+  color: #333;
+}
+
+.time {
+  color: #666;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contact-modal-overlay {
+    padding: 10px;
+  }
+
+  .contact-modal-content {
+    border-radius: 8px;
+    max-height: 95vh;
+  }
+
+  .contact-modal-header,
+  .contact-modal-body {
+    padding: 20px;
+  }
+
+  .contact-modal-header h2 {
+    font-size: 22px;
+  }
+
+  .contact-item {
+    font-size: 15px;
+  }
+
+  .opening-hours-section h3 {
+    font-size: 18px;
+  }
+
+  .hours-item {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-modal-header,
+  .contact-modal-body {
+    padding: 15px;
+  }
+
+  .contact-modal-close {
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+  }
+
+  .contact-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .contact-icon {
+    margin-right: 8px;
+  }
+
+  .hours-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}

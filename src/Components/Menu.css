@@ -13,6 +13,82 @@
   overflow: hidden;
 }
 
+/* Oscurecer un poco más solo el hero fijo del menú sin afectar el home */
+.menu-hero-slider .slide-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* Ligera reducción de opacidad (antes 0.65 / 0.45 / 0.65) */
+  background: linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.38) 55%, rgba(0,0,0,0.55));
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Asegurar que el contenido quede arriba del overlay adicional */
+.menu-hero-slider .slide-content { position: relative; z-index: 2; }
+
+/* Indicador de scroll hacia abajo (reemplaza botón Back) */
+.menu-hero-slider .scroll-down-indicator {
+  position: absolute;
+  bottom: 1.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 38px;
+  height: 58px;
+  border: 2px solid rgba(255,255,255,0.55);
+  border-radius: 28px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 10px;
+  cursor: pointer;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(6px) brightness(0.9);
+  -webkit-backdrop-filter: blur(6px) brightness(0.9);
+  transition: border-color .35s ease, background .35s ease, transform .35s ease, opacity .4s ease;
+  z-index: 3;
+  opacity: .85;
+}
+
+/* Estado oculto (se aplica al hacer scroll hasta el menú) */
+.menu-hero-slider .scroll-down-indicator.hide {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(6px);
+}
+
+.menu-hero-slider .scroll-down-indicator:hover,
+.menu-hero-slider .scroll-down-indicator:focus-visible {
+  border-color: rgba(255,255,255,0.9);
+  background: rgba(255,255,255,0.12);
+  outline: none;
+  transform: translateX(-50%) translateY(-4px);
+  opacity: 1;
+}
+
+.menu-hero-slider .scroll-down-indicator .arrow {
+  width: 10px;
+  height: 10px;
+  border-left: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: rotate(-45deg);
+  animation: scrollArrow 1.9s cubic-bezier(.55,.03,.32,1) infinite;
+  opacity: .9;
+}
+
+@keyframes scrollArrow {
+  0% { transform: translateY(0) rotate(-45deg); opacity:.2; }
+  35% { opacity:1; }
+  55% { transform: translateY(12px) rotate(-45deg); opacity:.9; }
+  75% { opacity:0; }
+  100% { opacity:0; transform: translateY(16px) rotate(-45deg); }
+}
+
+@media (max-width: 640px) {
+  .menu-hero-slider .scroll-down-indicator { width:32px; height:50px; padding-top:8px; bottom:1.4rem; }
+  .menu-hero-slider .scroll-down-indicator .arrow { width:8px; height:8px; }
+}
+
 .menu-hero-slider .slide-content {
   /* Centrado absoluto sin riesgo de desbordar */
   position: relative;

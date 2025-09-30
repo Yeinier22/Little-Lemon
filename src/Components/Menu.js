@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import Header from './Header';
@@ -10,21 +9,26 @@ import menuHeroImg from '../images/Menu.jpg';
 import menuData from '../data/menuData.json';
 
 const Menu = () => {
-  const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState('mainMenu');
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [showScrollIndicator, setShowScrollIndicator] = useState(true);
+  const navRef = useRef(null);
 
   // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Back to top functionality
+  // Back to top functionality & hide scroll indicator when nav visible
   useEffect(() => {
     const handleScroll = () => {
       setShowBackToTop(window.scrollY > 500);
+      if (navRef.current) {
+        const navTop = navRef.current.offsetTop;
+        const shouldHide = window.scrollY + 80 >= navTop;
+        setShowScrollIndicator(prev => shouldHide ? false : (prev ? true : true));
+      }
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -34,6 +38,16 @@ const Menu = () => {
       top: 0,
       behavior: 'smooth'
     });
+  };
+
+  const scrollToNav = () => {
+    const navEl = document.querySelector('.menu-nav');
+    if (navEl) {
+      const headerOffset = 12; // pequeña separación visual
+      const rect = navEl.getBoundingClientRect();
+      const offsetTop = rect.top + window.pageYOffset - headerOffset;
+      window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+    }
   };
 
   const renderMenuSection = (title, items) => (
@@ -92,18 +106,24 @@ const Menu = () => {
         showDecorations={false}
         className="menu-hero-slider"
       >
-        <button 
-          className="menu-back-button"
-          onClick={() => navigate('/')}
-        >
-          ← Back
-        </button>
+        {showScrollIndicator && (
+          <div
+            className={`scroll-down-indicator${!showScrollIndicator ? ' hide' : ''}`}
+            role="button"
+            tabIndex={0}
+            aria-label="Scroll to menu"
+            onClick={scrollToNav}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { scrollToNav(); } }}
+          >
+            <span className="arrow" />
+          </div>
+        )}
       </FullScreenSlider>
 
       <div className="menu-page">
 
       {/* Navigation Tabs */}
-      <div className="menu-nav">
+  <div className="menu-nav" ref={navRef}>
         <div className="menu-nav-container">
           <button 
             className={`menu-nav-button ${activeCategory === 'mainMenu' ? 'active' : ''}`}
