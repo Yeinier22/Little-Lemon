@@ -28,7 +28,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev:full": "concurrently \"npm run start\" \"npm --prefix server run dev\""
   },
   "eslintConfig": {
     "extends": [
@@ -51,6 +52,7 @@
   "devDependencies": {
     "@testing-library/react": "^14.1.2",
     "@testing-library/user-event": "^14.5.2",
-    "gh-pages": "^6.1.1"
+    "gh-pages": "^6.1.1",
+    "concurrently": "^8.2.2"
   }
 }

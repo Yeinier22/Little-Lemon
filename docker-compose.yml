@@ -1,0 +1,41 @@
+version: '3.9'
+services:
+  db:
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: little_lemon
+      MYSQL_USER: lemon
+      MYSQL_PASSWORD: lemonpass
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./server/db/schema.sql:/docker-entrypoint-initdb.d/1-schema.sql:ro
+      - ./server/db/seed.sql:/docker-entrypoint-initdb.d/2-seed.sql:ro
+  api:
+    build: ./server
+    restart: unless-stopped
+    environment:
+      DB_HOST: db
+      DB_USER: lemon
+      DB_PASSWORD: lemonpass
+      DB_NAME: little_lemon
+      DB_PORT: 3306
+      PORT: 5001
+      RESERVATION_DURATION_MIN: 90
+    depends_on:
+      - db
+    ports:
+      - "5001:5001"
+  web:
+    build: .
+    environment:
+      - REACT_APP_API_BASE=http://localhost:5001/api
+    ports:
+      - "3000:80"
+    depends_on:
+      - api
+volumes:
+  db_data:

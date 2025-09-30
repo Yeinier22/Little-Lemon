@@ -7,6 +7,7 @@ import OurStory from "./Components/OurStory";
 import OrderNowPage from './Components/Order/OrderNowPage';
 import { OrderProvider } from './Components/Order/OrderContext';
 import CartPage from './Components/Order/CartPage';
+import AdminReservations from './Components/AdminReservations';
 
 
 function App() {
@@ -18,7 +19,10 @@ function App() {
         <Route path="menu" element={<Menu />} />
         <Route path="/story" element={<OurStory />} />
         <Route path="/order" element={<OrderNowPage />} />
-  <Route path="/cart" element={<CartPage />} />
+        <Route path="/cart" element={<CartPage />} />
+        {process.env.REACT_APP_SHOW_ADMIN !== 'false' && (
+          <Route path="/admin/reservations" element={<AdminReservations />} />
+        )}
       </Routes>
     </OrderProvider>
   );

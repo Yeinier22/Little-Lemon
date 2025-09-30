@@ -13,7 +13,11 @@ CREATE TABLE IF NOT EXISTS reservations (
   date DATE NOT NULL,
   time TIME NOT NULL,
   table_number INT NOT NULL,
+  duration_minutes INT NOT NULL DEFAULT 90,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   UNIQUE KEY uq_table_slot (table_number, date, time),
   FOREIGN KEY (table_number) REFERENCES tables(id)
 );
+
+-- If upgrading from previous version without duration_minutes, run:
+-- ALTER TABLE reservations ADD COLUMN duration_minutes INT NOT NULL DEFAULT 90 AFTER table_number;
