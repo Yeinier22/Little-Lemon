@@ -31,7 +31,8 @@ const Available = ({ people, date, hour }) => {
       handleAvailabilityChange(isTableAvailable, mapped, true);
     } catch(err){
       console.error(err);
-      setError('Error loading availability');
+      const isConnectionError = err.message.includes('Network error') || err.message.includes('Failed to fetch');
+      setError(isConnectionError ? 'Server offline. Start backend with: npm run dev:api' : 'Error loading availability');
       handleAvailabilityChange(false, [], true);
     } finally {
       setLoading(false);

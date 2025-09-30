@@ -29,7 +29,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev:full": "concurrently \"npm run start\" \"npm --prefix server run dev\""
+    "dev:full": "concurrently \"npm run start\" \"npm --prefix server run dev\"",
+    "dev:api": "npm --prefix server run dev"
   },
   "eslintConfig": {
     "extends": [
