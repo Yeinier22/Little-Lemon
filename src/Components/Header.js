@@ -13,7 +13,8 @@ const Header = () => {
   const location = useLocation();
   // Consider both home and menu routes for initial transparent header over hero image
   const isHome = location.pathname === '/' || location.pathname === '/menu';
-  const forceSolidHeader = location.pathname === '/cart';
+  // Force the solid (scrolled) header style on routes that shouldn't appear transparent
+  const forceSolidHeader = location.pathname === '/cart' || location.pathname === '/order';
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth <= 945 : false);
