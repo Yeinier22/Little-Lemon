@@ -10,7 +10,7 @@ const handlechange=(e)=>{
 }
 
     return (
-   <div className="selector-container">
+   <div className="selector-container selector-with-icon icon-people">
             <select className="selector people" value={selectedValue} onChange={handlechange}>
                 {people.map((option, index)=>(
                     <option key={index} value={option} label={option}/>

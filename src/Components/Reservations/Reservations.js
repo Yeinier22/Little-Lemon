@@ -49,7 +49,7 @@ const Reservation = () => {
         <div className="reservation-container">
           <div className="reservation-link">
             {showBack && <button onClick={handleClick1}>&lt; Back</button>}
-            <Link to="/">HomePage</Link>
+            <Link to="/" aria-label="Back to home" className="back-home-link">← Back to Home</Link>
           </div>
           <div
             className={"title-reservation" + (!showDetails ? "" : "-details")}

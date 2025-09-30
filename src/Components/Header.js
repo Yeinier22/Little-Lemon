@@ -12,6 +12,7 @@ const Header = () => {
   const location = useLocation();
   // Consider both home and menu routes for initial transparent header over hero image
   const isHome = location.pathname === '/' || location.pathname === '/menu';
+  const forceSolidHeader = location.pathname === '/cart';
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth <= 945 : false);
@@ -45,37 +46,20 @@ const Header = () => {
 
   return (
   <header>
-  <div className={`header-container ${isScrolled ? 'scrolled' : ''} ${isHome && !isScrolled ? 'transparent' : ''} ${isOpen ? 'menu-open' : ''}`}>
-        <div 
-          className="header-logo-button"
-          onClick={() => window.location.href = '/'}
-          role="button"
-          tabIndex={0}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              window.location.href = '/';
-            }
-          }}
-        >
-          <TypographicLogo />
-        </div>
-        <div className="header-actions">
-          <button
-            className="order-now-btn order-inline"
-            data-has-items={totalItems > 0 ? 'true' : 'false'}
-            onClick={() => navigate(totalItems > 0 ? '/cart' : '/order')}
-            title={totalItems > 0 ? 'View Cart' : 'Order'}
-          >
-            {totalItems > 0 ? (
-              <>
-                <FontAwesomeIcon icon={faShoppingCart} style={{ marginRight: '6px' }} />
-                {totalItems}
-              </>
-            ) : (isMobile ? 'ORDER' : 'ORDER NOW')}
-          </button>
-          <FontAwesomeIcon icon={faBars} className={`icon-bars${isOpen ? "-open": ""}`} onClick={toggle}/>
-          <FontAwesomeIcon icon={faXmark} className={`icon-mark${!isOpen ? "-open": ""}`} onClick={toggle}/>
-        </div>
+    <div className={`header-container ${(isScrolled || forceSolidHeader) ? 'scrolled' : ''} ${isHome && !isScrolled && !forceSolidHeader ? 'transparent' : ''} ${isOpen ? 'menu-open' : ''}`}>
+      <div 
+        className="header-logo-button"
+        onClick={() => window.location.href = '/'}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            window.location.href = '/';
+          }
+        }}
+      >
+        <TypographicLogo />
+      </div>
       <nav className={`nav${isOpen ? '-open' :""}`}>
         <ul>
           <li><a href="#menu" onClick={handleMenuClick}>MENU</a></li>
@@ -85,7 +69,24 @@ const Header = () => {
           <li><a href="#catering">CATERING</a></li>
           <li><a href="#careers">CAREERS</a></li>
         </ul>
-      </nav> 
+      </nav>
+      <div className="header-actions">
+        <button
+          className="order-now-btn order-inline"
+          data-has-items={totalItems > 0 ? 'true' : 'false'}
+          onClick={() => navigate(totalItems > 0 ? '/cart' : '/order')}
+          title={totalItems > 0 ? 'View Cart' : 'Order'}
+        >
+          {totalItems > 0 ? (
+            <>
+              <FontAwesomeIcon icon={faShoppingCart} style={{ marginRight: '6px' }} />
+              {totalItems}
+            </>
+          ) : (isMobile ? 'ORDER' : 'ORDER NOW')}
+        </button>
+        <FontAwesomeIcon icon={faBars} className={`icon-bars${isOpen ? "-open": ""}`} onClick={toggle}/>
+        <FontAwesomeIcon icon={faXmark} className={`icon-mark${!isOpen ? "-open": ""}`} onClick={toggle}/>
+      </div>
       </div>
 
     </header>

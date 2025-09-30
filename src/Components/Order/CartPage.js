@@ -34,7 +34,8 @@ const CartPage = () => {
   return (
     <>
     <Header />
-    <div className="order-now-page cart-page" style={{ paddingTop: '120px' }}>
+  {/* Quitar style inline para que use el padding definido en CSS (más alto) */}
+  <div className="order-now-page cart-page">
       <h1 className="order-title">Your Order</h1>
       {state.items.length === 0 && (
         <div style={{ textAlign: 'center', padding: '60px 0', minHeight:'40vh' }}>

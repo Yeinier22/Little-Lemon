@@ -7,7 +7,7 @@ const Main = () => {
   return (
     <main>
       <FullScreenSlider />
-      <About />
+  <About />
       <ChakraProvider>
         <Testimonial />
       </ChakraProvider>

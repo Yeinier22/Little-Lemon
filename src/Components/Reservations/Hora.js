@@ -79,7 +79,7 @@ const HoursSelector = ({selectedValue, onChange, date}) => {
 }
 
   return (
-    <div className="selector-container">
+  <div className="selector-container selector-with-icon icon-hour">
         <select className="selector" value={selectedValue} onChange={handlechange} data-testid="hours-selector">
           {hours.map((hour, index) => (
             <option key={index} value={hour} label={hour} />

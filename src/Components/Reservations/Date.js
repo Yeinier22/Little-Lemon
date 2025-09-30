@@ -15,7 +15,7 @@ if(minDay.getHours()>=21){
 }
 
   return (
-    <div  className="selector-container"  >
+  <div  className="selector-container selector-with-icon icon-date"  >
         {selectedDate && (
         <DatePicker
           selected={selectedDate}
