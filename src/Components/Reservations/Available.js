@@ -1,7 +1,7 @@
 //import React, { useState } from "react";
 import { useAvailable } from "./Context/availableContext";
 import "./Reservations.css";
-import { getAvailabilitySuggestions } from "../../../api/reservations";
+import { getAvailabilitySuggestions } from "../../api/reservations";
 import { useState } from 'react';
 
 
