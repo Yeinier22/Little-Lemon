@@ -13,8 +13,17 @@ export async function getAvailabilitySuggestions({ date, time, people }) {
   const t = to24Hour(time);
   const ymd = date.toISOString().slice(0,10);
   const url = `${API_BASE}/availability/suggestions?date=${ymd}&time=${t}&people=${people}`;
-  const res = await fetch(url);
-  if(!res.ok) throw new Error('Failed availability');
+  let res;
+  try {
+    res = await fetch(url);
+  } catch(networkErr){
+    throw new Error(`Network error contacting availability API: ${networkErr.message}`);
+  }
+  if(!res.ok){
+    let detail = '';
+    try { detail = JSON.stringify(await res.json()); } catch(_) {}
+    throw new Error(`Failed availability (status ${res.status}) ${detail}`);
+  }
   return res.json();
 }
 
