@@ -5,7 +5,8 @@ import { useState, useContext, useEffect } from "react";
 import DateReservation from "./DateReservation";
 import FormTimer from "./timer";
 import { useAlert } from "../Context/alertContext";
-import { submitAPI } from "../Ocuppancy";
+// import { submitAPI } from "../Ocuppancy"; // deprecated simulated API
+import { createReservation } from "../../../api/reservations";
 import { useButton } from "../Context/SelectButtonContext";
 import { UserContext } from "../Reservations";
 
@@ -30,19 +31,27 @@ const FormSection = ({place, testing}) => {
   people: people1
     }
 
-  const handleFormSubmit = () => {
+  const handleFormSubmit = async () => {
     setIsOpen(true);
-    // Set timer to 0 when form is submitted
     timer.setTiempoRestante(0);
-    timer.setFormularioCompletado(true)
-    
-    submitAPI(formData, setOccupation)
-    .then(() => {
-      console.log("Form submitted successfully");
-    })
-    .catch(error => {
-      console.error("Form submission failed:", error.message);
-    });
+    timer.setFormularioCompletado(true);
+    try {
+      // We need user entered data too (formik values) but current form only uses name/last/email/phone not persisted before.
+      // Combine into reservation creation call.
+      await createReservation({
+        name: formik.values.firstName + ' ' + formik.values.lastName,
+        email: formik.values.email,
+        people: people1,
+        date: pickDate,
+        time: selectHour,
+        location: place
+      });
+      // add to local occupation state to reflect new booking visually (optional)
+      setOccupation(prev => [...prev, formData]);
+      console.log("Reservation stored in DB");
+    } catch(err){
+      console.error('Reservation error', err);
+    }
   };
 
   
@@ -56,7 +65,7 @@ const FormSection = ({place, testing}) => {
       specialRequest: "",
     },
     onSubmit: () => {
-      handleFormSubmit()
+      handleFormSubmit();
       formik.resetForm();
     },
     validationSchema: Yup.object({

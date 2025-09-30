@@ -167,27 +167,8 @@ function calculateTableAssignment(people, hour, date, occupation) {
   };
 }
 
-const fetchAPI = ({ people, date, hour, occupation }) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const result = calculateTableAssignment(people, hour, date, occupation);
-      resolve(result);
-    }, 200);
-  });
-};
+// Deprecated simulation APIs kept temporarily for reference; real backend now in use.
+// const fetchAPI = (...) => {...}
+// const submitAPI = (...) => {...}
 
-const submitAPI = (formData, setOccupation) => {
-  setOccupation((prevArray) => [...prevArray, formData]);
-
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (formData) {
-        resolve(true); // Simulate successful submission
-      } else {
-        reject(new Error("Form submission failed."));
-      }
-    }, 200); // Simulate API delay
-  });
-};
-
-export { fetchAPI, calculateTableAssignment, submitAPI };
+export { calculateTableAssignment };
