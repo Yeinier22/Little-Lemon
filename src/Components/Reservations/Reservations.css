@@ -80,9 +80,12 @@
     padding-bottom: 20px; /* Agrega un espacio entre el texto y la línea roja */
 }
 
-   span{
-    margin-bottom: 20px;
-  }
+/* Evitar colisión global: antes era 'span { margin-bottom:20px }' afectando todo el sitio.
+     Limitamos sólo a spans dentro del contenedor de reservas (y se puede ajustar por clase si se quiere más granular). */
+.reservation-container span,
+.reservation-container .state-reservation span {
+        margin-bottom:20px;
+}
 
 
 

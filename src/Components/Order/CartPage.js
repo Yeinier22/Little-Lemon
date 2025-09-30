@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useOrder } from './OrderContext';
 import '../Order/OrderNow.css';
 import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import Header from '../Header';
+import Footer from '../Footer';
 
 const CartPage = () => {
   const { state, dispatch, totalAmount, totalItems } = useOrder();
   const navigate = useNavigate();
+  const prevCountRef = useRef(state.items.length);
 
   const changeQty = (id, delta) => {
     const item = state.items.find(i => i.id === id);
@@ -16,37 +21,69 @@ const CartPage = () => {
   const remove = id => dispatch({ type: 'REMOVE_ITEM', payload: { id } });
   const clear = () => dispatch({ type: 'CLEAR' });
 
+  // Redirect to /order when cart transitions from non-empty to empty
+  useEffect(() => {
+    const prev = prevCountRef.current;
+    const current = state.items.length;
+    if (prev > 0 && current === 0) {
+      navigate('/order');
+    }
+    prevCountRef.current = current;
+  }, [state.items.length, navigate]);
+
   return (
-    <div className="order-now-page cart-page">
+    <>
+    <Header />
+    <div className="order-now-page cart-page" style={{ paddingTop: '120px' }}>
       <h1 className="order-title">Your Order</h1>
       {state.items.length === 0 && (
-        <div style={{ textAlign: 'center', padding: '40px 0' }}>
-          <p>Your cart is empty.</p>
-          <button className="add-btn" onClick={() => navigate('/order')}>Browse Dishes</button>
+        <div style={{ textAlign: 'center', padding: '60px 0', minHeight:'40vh' }}>
+          <p style={{opacity:.6}}>Cart empty. Redirecting...</p>
         </div>
       )}
       {state.items.length > 0 && (
         <div className="cart-layout">
-          <div className="cart-items">
-            {state.items.map(item => (
-              <div key={item.id} className="cart-item">
-                <div className="thumb">
-                  <img src={item.image} alt={item.name} />
-                </div>
-                <div className="info">
-                  <h3>{item.name}</h3>
-                  <div className="controls">
-                    <div className="qty-mini">
-                      <button onClick={() => changeQty(item.id, -1)}>-</button>
-                      <span>{item.qty}</span>
-                      <button onClick={() => changeQty(item.id, 1)}>+</button>
+          <div className="cart-panel">
+            <div className="cart-top-bar">
+              <h2 className="cart-top-title">Order Details</h2>
+              <button
+                className="remove-all-btn"
+                onClick={clear}
+                aria-label="Remove all items"
+                title="Remove all items"
+              >
+                <span>REMOVE ALL</span>
+                <FontAwesomeIcon icon={faTrash} />
+              </button>
+            </div>
+            <div className="cart-items">
+              {state.items.map(item => (
+                <div key={item.id} className="cart-item">
+                  <div className="thumb">
+                    <img src={item.image} alt={item.name} />
+                  </div>
+                  <div className="info">
+                    <h3>{item.name}</h3>
+                    <div className="controls">
+                      <div className="qty-mini">
+                        <button onClick={() => changeQty(item.id, -1)}>-</button>
+                        <span>{item.qty}</span>
+                        <button onClick={() => changeQty(item.id, 1)}>+</button>
+                      </div>
+                        <span className="line-price">$ {(item.price * item.qty).toFixed(2)}</span>
+                      <button
+                        className="remove"
+                        onClick={() => remove(item.id)}
+                        aria-label="Remove item"
+                        title="Remove item"
+                      >
+                        <FontAwesomeIcon icon={faTrash} />
+                      </button>
                     </div>
-                      <span className="line-price">$ {(item.price * item.qty).toFixed(2)}</span>
-                    <button className="remove" onClick={() => remove(item.id)}>×</button>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
           <div className="cart-summary">
             <h2>Summary</h2>
@@ -60,6 +97,8 @@ const CartPage = () => {
         </div>
       )}
     </div>
+    <Footer />
+    </>
   );
 };
 

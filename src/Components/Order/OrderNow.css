@@ -1,15 +1,21 @@
 .order-now-page {
   padding: 120px 40px 60px; /* account for fixed header */
-  background: linear-gradient(180deg,#f0eee7 0%, #faf8f1 60%);
+  /* Fondo CLARO (se mostrará después del scroll) */
+  background: linear-gradient(180deg, #e9e4da 0%, #f7f4ec 55%, #faf8f1 100%);
   min-height: 100vh;
+  transition: background .6s ease;
 }
 
-/* When near top (no scroll yet) apply a darker subtle backdrop to contrast white logo */
+/* Estado inicial (sin scroll): fondo más oscuro para contraste con header blanco */
 :root:not(.order-bg-light) .order-now-page {
-  background: linear-gradient(180deg,#e9e4da 0%, #f7f4ec 55%, #faf8f1 100%);
+  background: linear-gradient(180deg, #1e120f 0%, #fff9f7 25%, #3a241f 55%, #4b2d26 100%);
 }
 
-:root.order-bg-light .order-now-page { transition: background .6s ease; }
+/* Colores del título según estado */
+:root:not(.order-bg-light) .order-title { color:#f8f5f1; text-shadow:0 2px 6px rgba(0,0,0,.45); }
+:root.order-bg-light .order-title { color:#2c2c2c; }
+/* Cart page: siempre título negro, sin sombra */
+.cart-page .order-title { color:#111 !important; text-shadow:none !important; }
 
 .order-title {
   font-size: 2.5rem;
@@ -17,7 +23,7 @@
   text-align: center;
   margin: 0 0 2.5rem;
   letter-spacing: 2px;
-  color: #2c2c2c;
+  /* El color se gestiona por los selectores dependientes de :root arriba */
 }
 
 .order-grid { display:grid; gap:2rem; max-width:1500px; margin:0 auto; }
@@ -76,20 +82,51 @@
 
 /* Cart */
 .cart-layout { display:grid; grid-template-columns: 1fr 340px; gap:2.5rem; max-width:1400px; margin:0 auto; }
-.cart-items { display:flex; flex-direction:column; gap:1.2rem; }
+.cart-panel { background:#fff; border:1px solid #e7e5e2; border-radius:38px; padding:46px 54px 56px; box-shadow:0 14px 50px -12px rgba(0,0,0,.09); display:flex; flex-direction:column; position:relative; overflow:hidden; }
+.cart-panel:before { content:''; position:absolute; inset:0; pointer-events:none; background:linear-gradient(180deg,rgba(0,0,0,0.03),transparent 120px); border-radius:38px; }
+.cart-items { display:flex; flex-direction:column; gap:1.9rem; }
+
+/* Cart page: fondo siempre claro independientemente del scroll / clase order-bg-light */
+.cart-page.order-now-page,
+:root:not(.order-bg-light) .cart-page.order-now-page {
+  background: linear-gradient(180deg, #e9e4da 0%, #f7f4ec 55%, #faf8f1 100%) !important;
+}
+.cart-top-bar { display:flex; align-items:center; justify-content:space-between; padding:6px 4px 4px; }
+.cart-top-title { margin:0; font-size:1.55rem; font-weight:700; letter-spacing:.5px; }
+.remove-all-btn { display:inline-flex; gap:10px; align-items:center; background:transparent; border:none; font-family:inherit; font-size:.95rem; letter-spacing:1px; cursor:pointer; color:#555; padding:10px 14px; border-radius:10px; transition:color .25s ease, background .25s ease; }
+.remove-all-btn svg { font-size:1.05rem; }
+.remove-all-btn:hover { color:#000; background:rgba(0,0,0,.05); }
+.remove-all-btn:active { transform:translateY(1px); }
 .cart-item { display:flex; gap:18px; background:#fff; border:1px solid #eee; border-radius:14px; padding:14px 18px; box-shadow:0 4px 14px rgba(0,0,0,.04); }
 .cart-item .thumb { width:110px; height:90px; overflow:hidden; border-radius:10px; }
 .cart-item .thumb img { width:100%; height:100%; object-fit:cover; }
 .cart-item .info { flex:1; display:flex; flex-direction:column; }
 .cart-item h3 { margin:0 0 8px; font-size:1rem; font-family:'Playfair Display', serif; }
 .controls { margin-top:auto; display:flex; align-items:center; gap:18px; }
-.qty-mini { display:flex; align-items:center; gap:10px; background:#f5f5f5; padding:6px 10px; border-radius:10px; }
-.qty-mini button { width:30px; height:30px; border:none; background:#e8e8e8; cursor:pointer; border-radius:8px; font-size:1rem; font-weight:700; }
+.controls { --qty-btn:40px; --qty-pad:4px; }
+.qty-mini { display:inline-flex; align-items:center; gap:12px; background:#f5f5f5; padding:var(--qty-pad) 18px; border-radius:999px; height:calc(var(--qty-btn) + var(--qty-pad)*2); }
+.qty-mini button { width:var(--qty-btn); height:var(--qty-btn); border:none; background:#e8e8e8; cursor:pointer; border-radius:12px; font-size:1.05rem; font-weight:700; display:flex; align-items:center; justify-content:center; line-height:1; }
 .qty-mini button:hover { background:#ddd; }
-.qty-mini span { min-width:24px; text-align:center; font-weight:600; }
-.line-price { font-weight:700; letter-spacing:.5px; }
-.remove { background:transparent; border:none; font-size:1.4rem; cursor:pointer; color:#c8102e; }
-.remove:hover { transform:scale(1.2); }
+.qty-mini button, .qty-mini span { margin:0; padding:0; }
+.qty-mini span { width:var(--qty-btn); height:var(--qty-btn); font-weight:600; display:flex; align-items:center; justify-content:center; line-height:1; font-size:1.05rem; transform:translateY(2px); /* ajuste óptico */ }
+/* Asegura que el precio tenga misma altura y centrado óptico */
+.line-price {
+  font-weight:700;
+  letter-spacing:.5px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  height:calc(var(--qty-btn) + var(--qty-pad)*2);
+  line-height:calc(var(--qty-btn) + var(--qty-pad)*2); /* asegura que no haya espacio extra inferior */
+  padding:0 6px;
+  margin:0; /* elimina posibles márgenes colapsados */
+}
+
+/* Ajuste adicional: garantizar que ningún hijo directo de .controls aporte margen vertical inesperado */
+.controls > * { margin-top:0 !important; margin-bottom:0 !important; }
+.remove { background:transparent; border:none; font-size:.95rem; cursor:pointer; color:#222; display:inline-flex; align-items:center; justify-content:center; width:32px; height:32px; border-radius:8px; transition:background .25s ease, color .25s ease, transform .25s ease; }
+.remove:hover { background:rgba(0,0,0,0.07); color:#000; transform:scale(1.05); }
+.remove:active { transform:scale(.9); }
 .cart-summary { background:#fff; border:1px solid #eee; border-radius:20px; padding:30px 28px 34px; height:fit-content; box-shadow:0 8px 26px rgba(0,0,0,.05); position:sticky; top:110px; }
 .cart-summary h2 { margin:0 0 20px; font-size:1.4rem; letter-spacing:1px; }
 .summary-line { display:flex; justify-content:space-between; margin:0 0 10px; font-weight:600; }
@@ -99,6 +136,16 @@
 .back-btn:hover { background:#e2e2e2; }
 
 @media (max-width: 1000px) { .cart-layout { grid-template-columns:1fr; } .cart-summary { position:relative; top:0; } }
+
+@media (max-width: 760px) {
+  .cart-panel { padding:34px 28px 44px; border-radius:30px; }
+  .cart-top-title { font-size:1.35rem; }
+  .cart-items { gap:1.2rem; }
+  .cart-item { flex-direction:column; }
+  .cart-item .thumb { width:100%; height:180px; }
+  .controls { flex-wrap:wrap; gap:14px; }
+  .line-price { order:3; }
+}
 
 /* Header badge animation (rely on button text) */
 .order-now-btn { position:relative; }

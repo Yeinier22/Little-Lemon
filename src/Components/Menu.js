@@ -58,7 +58,7 @@ const Menu = () => {
   const renderMainMenu = () => (
     <div className="menu-content">
       {renderMenuSection('Appetizers', menuData.mainMenu.entradas)}
-      {renderMenuSection('Main Courses', menuData.mainMenu.platosPrincipales)}
+      {renderMenuSection('Mains', menuData.mainMenu.platosPrincipales)}
       {renderMenuSection('Desserts', menuData.mainMenu.postres)}
     </div>
   );

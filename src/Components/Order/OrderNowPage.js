@@ -61,7 +61,7 @@ const OrderNowPage = () => {
     const { mainMenu } = menuData;
     return [
       { id: 'appetizers', title: 'Appetizers', items: filterWithImages(mainMenu.entradas) },
-      { id: 'main-courses', title: 'Main Courses', items: filterWithImages(mainMenu.platosPrincipales) },
+      { id: 'main-courses', title: 'Mains', items: filterWithImages(mainMenu.platosPrincipales) },
       { id: 'desserts', title: 'Desserts', items: filterWithImages(mainMenu.postres) }
     ];
   }, []);

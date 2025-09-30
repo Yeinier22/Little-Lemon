@@ -5,16 +5,28 @@
 
 /* Hero (Menu) Slider specific tweaks to ensure perfect centering */
 .menu-hero-slider .slide-overlay {
-  padding: 0 4%; /* reduce lateral padding so visual center aligns */
+  /* Eliminamos padding heredado excesivo y controlamos con viewport units */
+  padding: 0; 
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 .menu-hero-slider .slide-content {
+  /* Centrado absoluto sin riesgo de desbordar */
+  position: relative;
   margin: 0 auto;
   text-align: center;
+  width: 100%;
+  max-width: clamp(340px, 62vw, 900px);
+  padding: 0 4vw; /* respiración lateral responsive */
+  box-sizing: border-box;
+  overflow-wrap: break-word;
 }
+
+/* Asegurar que el contenedor principal no genere scroll horizontal accidental */
+.menu-hero-slider { overflow: hidden; }
 
 .menu-back-button {
   position: absolute;

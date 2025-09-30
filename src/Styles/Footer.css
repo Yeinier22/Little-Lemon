@@ -10,6 +10,12 @@ footer {
     position: relative;
 }
 
+/* Layout spacing tokens shared with header */
+:root {
+    --pad-desktop: 40px;
+    --pad-mobile: 26px;
+}
+
 
 .footer-container {
     display: grid;
@@ -18,7 +24,7 @@ footer {
     justify-content: center;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 60px 40px 40px;
+    padding: 60px var(--pad-desktop) 40px;
     text-align: center;
     align-items: flex-start;
 }
@@ -267,37 +273,58 @@ footer a:hover {
 
     .footer-container {
         grid-template-columns:1fr;
+        padding:50px var(--pad-mobile) 30px; /* Espaciado respirable */
+        row-gap:46px;
+        text-align:left; /* mantener alinear texto legible */
     }
 
-    footer {
+    footer { display:block; }
+
+    .logo-container { 
+        margin-top:0; 
+        height:auto; 
+        width:100%; 
+        justify-content:flex-start; 
+        align-items:flex-start; 
+        text-align:left; 
+    }
+
+    .logo-home-button { 
+        padding:0; 
+        margin:0; 
+        display:flex; 
+        align-items:flex-start; 
+        justify-content:flex-start; 
+    }
+
+    .logo-container .typographic-logo { 
+        margin-left:0 !important; 
+    }
+
+    .logo-home-button { 
         display: flex;
-        justify-content: center;
-    }
-
-    .footer-container {
-        padding: 0;
-        margin: 0;
+        justify-content: space-between;
         width: 100%;
-    }
-    
-    .logo-container {
-        display:flex;
-        margin-top: 25px;
-        height: 100px;
-        width: 100%;
-        justify-content: center;
-    }
-    .footer-logo {
-        transform: rotate(0deg);
+        padding:0; 
     }
 
-    .footer-container h3{
-        margin-top: 25px;
-    }
+    .logo-container .typographic-logo { margin-bottom:10px; }
 
-    .footer-social {
-        margin-bottom: 25px;
-    }
+    .footer-container h3 { margin-top:0; margin-bottom:22px; }
+    /* Alinear subrayado dorado con el texto (ya no centrado) */
+    .footer-container h3::after { left:0; transform:none; }
+
+    .footer-navigation nav ul li a { font-size:1rem; }
+
+    .footer-social { margin-bottom:0; }
+
+    .social-links { justify-content:flex-start; }
+
+    .social-link { width:40px; height:40px; font-size:1rem; }
+
+    .contact-item { margin-bottom:12px; }
+
+    .back-to-top { bottom:18px; right:18px; width:46px; height:46px; }
     
    
 }
